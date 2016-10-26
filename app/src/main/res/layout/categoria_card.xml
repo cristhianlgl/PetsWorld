@@ -5,9 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="150dp"
     Card_View:cardBackgroundColor="@color/colorAccent"
-    Card_View:cardElevation="2dp"
-
-    Card_View:cardUseCompatPadding="false" >
+    Card_View:cardElevation="0dp"
+    Card_View:cardMaxElevation="0dp"
+    Card_View:cardCornerRadius="1dp"
+    >
 
     <RelativeLayout
         android:layout_width="wrap_content"
