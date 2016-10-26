@@ -1,9 +1,9 @@
-package com.unad.diplomado.petsworld;
+package com.unad.diplomado.petsworld.domain;
 
 import android.graphics.Color;
 
 /**
- * Created by Fizz on 22/10/2016.
+ * Created by cristhian on 22/10/2016.
  */
 public class Categoria {
     private String nombre;

@@ -1,17 +1,18 @@
 package com.unad.diplomado.petsworld;
 
 import android.support.v7.widget.RecyclerView;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.unad.diplomado.petsworld.domain.Categoria;
+
 import java.util.List;
 
 /**
- * Created by Fizz on 22/10/2016.
+ * Created by cristhian on 22/10/2016.
  */
 public class CategoriaAdater extends RecyclerView.Adapter<CategoriaAdater.CategroriaViewHolder>{
     private List<Categoria> categorias;
