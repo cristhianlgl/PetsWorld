@@ -5,24 +5,24 @@
             <group android:checkableBehavior="single">
                 <item
                     android:id="@+id/nav_parques"
-                    android:icon="@drawable/ic_menu_camera"
+                    android:icon="@drawable/ic_parques"
                     android:title="Parques" />
                 <item
-                    android:id="@+id/nav_almuerzo"
-                    android:icon="@drawable/ic_menu_gallery"
-                    android:title="Almuerzo" />
+                    android:id="@+id/nav_comidas"
+                    android:icon="@drawable/ic_comidas"
+                    android:title="Comidas" />
                 <item
-                    android:id="@+id/nav_salud"
-                    android:icon="@drawable/ic_menu_slideshow"
-                    android:title="Salud" />
+                    android:id="@+id/nav_veterinarias"
+                    android:icon="@drawable/ic_veterinarias"
+                    android:title="Veterinarias" />
                 <item
                     android:id="@+id/nav_tiendas"
-                    android:icon="@drawable/ic_menu_manage"
-                    android:title="Tiendas" />
+                    android:icon="@drawable/ic_tiendas"
+                    android:title="Tiendas Pets" />
                 <item
-                    android:id="@+id/nav_juegos"
-                    android:icon="@drawable/ic_menu_manage"
-                    android:title="Juegos" />
+                    android:id="@+id/nav_servicios"
+                    android:icon="@drawable/ic_servicios"
+                    android:title="Servicios" />
             </group>
         </menu>
     </item>
@@ -31,12 +31,12 @@
         <menu>
             <group android:checkableBehavior="single">
                 <item
-                    android:id="@+id/nav_share"
+                    android:id="@+id/nav_configuracion"
                     android:icon="@drawable/ic_menu_manage"
                     android:title="Configuracion" />
                 <item
-                    android:id="@+id/nav_send"
-                    android:icon="@drawable/ic_menu_send"
+                    android:id="@+id/nav_acercade"
+                    android:icon="@drawable/ic_menu_acerca"
                     android:title="Acerca de" />
             </group>
         </menu>

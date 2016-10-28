@@ -8,9 +8,9 @@ import android.graphics.Color;
 public class Categoria {
     private String nombre;
     private int imagen;
-    private String color;
+    private int color;
 
-    public Categoria (int imagen, String nombre, String color) {
+    public Categoria (int imagen, String nombre, int color) {
         this.nombre = nombre;
         this.imagen = imagen;
         this.color = color;
@@ -18,6 +18,6 @@ public class Categoria {
 
     public String getNombre(){return nombre;}
     public int getImagen(){ return imagen; }
-    public String getColor() { return  color; }
+    public int getColor() { return  color; }
 
 }

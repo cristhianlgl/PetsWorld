@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.unad.diplomado.petsworld.domain.Categoria;
@@ -20,11 +21,13 @@ public class CategoriaAdater extends RecyclerView.Adapter<CategoriaAdater.Categr
     public static class CategroriaViewHolder extends RecyclerView.ViewHolder {
         public ImageView imagen;
         public TextView nombre;
+        public LinearLayout linearLayout;
 
         public CategroriaViewHolder(View v){
             super(v);
             imagen = (ImageView) v.findViewById(R.id.imagen_categoria);
             nombre = (TextView) v.findViewById(R.id.nombre_categroria);
+            linearLayout = (LinearLayout) v.findViewById(R.id.menu_contenedor_fondo);
         }
     }
 
@@ -36,7 +39,7 @@ public class CategoriaAdater extends RecyclerView.Adapter<CategoriaAdater.Categr
     @Override
     public  CategroriaViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View v = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.categoria_card, viewGroup, false);
+                .inflate(R.layout.item_categoria, viewGroup, false);
         return new CategroriaViewHolder(v);
     }
 
@@ -44,5 +47,6 @@ public class CategoriaAdater extends RecyclerView.Adapter<CategoriaAdater.Categr
     public  void onBindViewHolder (CategroriaViewHolder viewHolder, int i){
         viewHolder.imagen.setImageResource(categorias.get(i).getImagen());
         viewHolder.nombre.setText(categorias.get(i).getNombre());
+        viewHolder.linearLayout.setBackgroundResource(categorias.get(i).getColor());
     }
 }

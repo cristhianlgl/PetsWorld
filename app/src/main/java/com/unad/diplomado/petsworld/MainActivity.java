@@ -14,6 +14,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import com.unad.diplomado.petsworld.domain.Categoria;
 
@@ -54,11 +56,11 @@ public class MainActivity extends AppCompatActivity
 
         // inicializa las categorias
         List<Categoria> categorias = new ArrayList<>();
-        categorias.add(new Categoria(R.drawable.ic_menu_camera,"prueba","ffffff"));
-        categorias.add(new Categoria(R.drawable.ic_menu_camera,"como","ffffff"));
-        categorias.add(new Categoria(R.drawable.ic_menu_camera,"Sless","ffffff"));
-        categorias.add(new Categoria(R.drawable.ic_menu_camera,"Sless","ffffff"));
-        categorias.add(new Categoria(R.drawable.ic_menu_camera,"Sless","ffffff"));
+        categorias.add(new Categoria(R.drawable.parques,"Parques",R.drawable.button_naranja));
+        categorias.add(new Categoria(R.drawable.comidas,"Comida",R.drawable.button_azul));
+        categorias.add(new Categoria(R.drawable.veterinarias,"Veterinarias",R.drawable.buttton_violeta));
+        categorias.add(new Categoria(R.drawable.tiendas,"Tiendas Pets",R.drawable.button_verde));
+        categorias.add(new Categoria(R.drawable.servicios,"Veterinarias",R.drawable.button_rojo));
 
         //obtener el recycler
         recyclerView = (RecyclerView) findViewById(R.id.menu_reciclador);
@@ -71,8 +73,8 @@ public class MainActivity extends AppCompatActivity
         //crear un nuevo adaptador
         adapter = new CategoriaAdater(categorias);
         recyclerView.setAdapter(adapter);
-
     }
+
 
     @Override
     public void onBackPressed() {
@@ -113,16 +115,18 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_parques) {
-            // Handle the camera action
-        } else if (id == R.id.nav_almuerzo) {
 
-        } else if (id == R.id.nav_salud) {
+        } else if (id == R.id.nav_comidas) {
+
+        } else if (id == R.id.nav_veterinarias) {
 
         } else if (id == R.id.nav_tiendas) {
 
-        } else if (id == R.id.nav_share) {
+        } else if (id == R.id.nav_servicios) {
 
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_configuracion) {
+
+        } else if (id == R.id.nav_acercade) {
 
         }
 
