@@ -49,4 +49,6 @@ public class CategoriaAdater extends RecyclerView.Adapter<CategoriaAdater.Categr
         viewHolder.nombre.setText(categorias.get(i).getNombre());
         viewHolder.linearLayout.setBackgroundResource(categorias.get(i).getColor());
     }
+
+
 }

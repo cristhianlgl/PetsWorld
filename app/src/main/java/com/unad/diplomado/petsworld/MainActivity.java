@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity
         //crear un nuevo adaptador
         adapter = new CategoriaAdater(categorias);
         recyclerView.setAdapter(adapter);
+
     }
 
 
