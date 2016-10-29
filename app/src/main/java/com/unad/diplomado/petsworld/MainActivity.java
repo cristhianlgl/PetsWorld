@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity
         categorias.add(new Categoria(R.drawable.comidas,"Comida",R.drawable.button_azul));
         categorias.add(new Categoria(R.drawable.veterinarias,"Veterinarias",R.drawable.buttton_violeta));
         categorias.add(new Categoria(R.drawable.tiendas,"Tiendas Pets",R.drawable.button_verde));
-        categorias.add(new Categoria(R.drawable.servicios,"Veterinarias",R.drawable.button_rojo));
+        categorias.add(new Categoria(R.drawable.servicios,"Servicios",R.drawable.button_rojo));
 
         //obtener el recycler
         recyclerView = (RecyclerView) findViewById(R.id.menu_reciclador);

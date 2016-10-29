@@ -1,4 +1,4 @@
-package com.unad.diplomado.petsworld.ui;
+package com.unad.diplomado.petsworld.ui.fragmentos;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;

@@ -4,22 +4,20 @@ package com.unad.diplomado.petsworld.domain;
  * Created by cristhian on 25/10/2016.
  */
 public class Sitio {
-    private int id;
+    private String idSitio;
     private String nombre;
     private String descripcion;
     private String ubicacion;
     private String telefono;
     private String latitud;
     private String longitud;
-    private int idCategoria;
-    private int idCiudad;
+    private String idCategoria;
+    private String categoria;
+    private String idCiudad;
+    private String ciudad;
 
-    public Sitio() {
-
-    }
-
-    public Sitio(int id, String nombre, String descripcion, String ubicacion, String telefono, String latitud, String longitud, int idCategoria, int idCiudad) {
-        this.id = id;
+     public Sitio(String idSitio, String nombre, String descripcion, String ubicacion, String telefono, String latitud, String longitud, String idCategoria, String categoria, String idCiudad, String ciudad) {
+        this.idSitio = idSitio;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.ubicacion = ubicacion;
@@ -30,8 +28,8 @@ public class Sitio {
         this.idCiudad = idCiudad;
     }
 
-    public int getId() {
-        return id;
+    public String getId() {
+        return idSitio;
     }
 
     public String getNombre() {
@@ -58,16 +56,20 @@ public class Sitio {
         return longitud;
     }
 
-    public int getIdCategoria() {
+    public String getIdCategoria() {
         return idCategoria;
     }
 
-    public int getIdCiudad() {
+    public String  getIdCiudad() {
         return idCiudad;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public String getCategoria() { return categoria; }
+
+    public String getCiudad() { return ciudad; }
+
+    public void setId(String idSitio) {
+        this.idSitio = idSitio;
     }
 
     public void setNombre(String nombre) {
@@ -94,11 +96,15 @@ public class Sitio {
         this.longitud = longitud;
     }
 
-    public void setIdCategoria(int idCategoria) {
+    public void setIdCategoria(String idCategoria) {
         this.idCategoria = idCategoria;
     }
 
-    public void setIdCiudad(int idCiudad) {
+    public void setIdCiudad(String idCiudad) {
         this.idCiudad = idCiudad;
     }
+
+    public void setCategoria(String categoria) { this.categoria = categoria; }
+
+    public void setCiudad(String ciudad) { this.ciudad = ciudad; }
 }

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="95dp"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/activity_vertical_margin">
+
+    <ImageView
+        android:id="@+id/item_sitio_imagen"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/parques"
+        android:scaleType="centerCrop"
+        android:padding="10dp"
+        android:layout_gravity="center"
+        android:background="@color/colorIconItemSitio"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Item"
+            android:textColor="@color/colorPrimaryDark"
+            android:textStyle="bold"
+            android:id="@+id/item_sitio_nombre" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="dede dejdhjehd dejkdjekjd  jdekdkjed jdk  jdkje hdjhd ndjskd nskdjskd "
+            android:id="@+id/item_sitio_descripcion" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cartago"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/item_sitio_ciudad"
+            android:layout_below="@+id/imagen_item_sitio"
+            android:layout_alignLeft="@+id/descripion_sitio_item"
+            android:layout_alignStart="@+id/descripion_sitio_item" />
+
+    </LinearLayout>
+</LinearLayout>
