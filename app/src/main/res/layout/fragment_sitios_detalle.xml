@@ -27,7 +27,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sitio lalla llaslals llasl"
+                android:id="@+id/detalle_sitios_nombre"
+                android:text=""
                 android:textStyle="bold"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="15dp"
@@ -45,8 +46,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/label_descripcion"
-                android:text="Testo largo para descripcion del campo de jjjas klsklaks laksl klakslak klkalska l"/>
+                android:id="@+id/detalle_sitio_descripcion"
+                android:text=""/>
 
         </LinearLayout>
 
@@ -79,8 +80,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/label_ciudad"
-                android:text="Cartago"/>
+                android:id="@+id/detalle_sitio_ciudad"
+                android:text=""/>
 
             <Spinner
                 android:layout_width="match_parent"
@@ -99,8 +100,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/label_ubicacion"
-                android:text="Calle 34 No 6-33 norte avenida 2"/>
+                android:id="@+id/detalle_sitio_ubicacion"
+                android:text=""/>
 
             <Spinner
                 android:layout_width="match_parent"
@@ -119,8 +120,8 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/label_telefono"
-                android:text="322 222 2222  21 399 2002"/>
+                android:id="@+id/detalle_sitio_telefono"
+                android:text=""/>
 
 
         </LinearLayout>

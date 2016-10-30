@@ -74,6 +74,9 @@ public class SitiosFragment extends Fragment {
         lista.setLayoutManager(lManager);
 
         // Cargar datos en el adaptador
+
+
+
         cargarAdaptador();
 
         return v;
@@ -125,7 +128,7 @@ public class SitiosFragment extends Fragment {
             switch (estado) {
                 case "1": // EXITO
                     // Obtener array "metas" Json
-                    JSONArray mensaje = response.getJSONArray("Sitio");
+                    JSONArray mensaje = response.getJSONArray("Sitios");
                     // Parsear con Gson
                     Sitio[] sitios = gson.fromJson(mensaje.toString(), Sitio[].class);
                     // Inicializar adaptador

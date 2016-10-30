@@ -38,7 +38,6 @@ public class MainActivity extends AppCompatActivity
         displaySelectedScreen(R.id.nav_home);
     }
 
-
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

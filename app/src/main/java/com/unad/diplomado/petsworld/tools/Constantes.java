@@ -21,7 +21,7 @@ public class Constantes {
      * URLs del Web Service
      */
 
-    public static final String GET_SITIOS = URL_BASE  + "/obtener_sitios.php";
+    public static final String GET_SITIOS = "http://petsworld.netau.net/obtener_sitios.php";
     public static final String GET_SITIO_BY_ID = URL_BASE + "/obtener_sitio_por_id.php";
     public static final String GET_SITIO_BY_CATEGORIA = URL_BASE + "obtener_sitio_por_categoria.php";
     public static final String INSERT = URL_BASE  + "/insertar_meta.php";

@@ -12,11 +12,11 @@ public class Sitio {
     private String latitud;
     private String longitud;
     private String idCategoria;
-    private String categoria;
+    private String Categoria;
     private String idCiudad;
-    private String ciudad;
+    private String Ciudad;
 
-     public Sitio(String idSitio, String nombre, String descripcion, String ubicacion, String telefono, String latitud, String longitud, String idCategoria, String categoria, String idCiudad, String ciudad) {
+     public Sitio(String idSitio, String nombre, String descripcion, String ubicacion, String telefono, String latitud, String longitud, String idCategoria, String Categoria, String idCiudad, String Ciudad) {
         this.idSitio = idSitio;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -25,7 +25,9 @@ public class Sitio {
         this.latitud = latitud;
         this.longitud = longitud;
         this.idCategoria = idCategoria;
+        this.Categoria = Categoria;
         this.idCiudad = idCiudad;
+        this.Ciudad = Ciudad;
     }
 
     public String getId() {
@@ -64,9 +66,9 @@ public class Sitio {
         return idCiudad;
     }
 
-    public String getCategoria() { return categoria; }
+    public String getCategoria() { return Categoria; }
 
-    public String getCiudad() { return ciudad; }
+    public String getCiudad() { return Ciudad; }
 
     public void setId(String idSitio) {
         this.idSitio = idSitio;
@@ -104,7 +106,7 @@ public class Sitio {
         this.idCiudad = idCiudad;
     }
 
-    public void setCategoria(String categoria) { this.categoria = categoria; }
+    public void setCategoria(String categoria) { this.Categoria = categoria; }
 
-    public void setCiudad(String ciudad) { this.ciudad = ciudad; }
+    public void setCiudad(String ciudad) { this.Ciudad = ciudad; }
 }
