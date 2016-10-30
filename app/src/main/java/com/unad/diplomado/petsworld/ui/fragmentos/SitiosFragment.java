@@ -3,7 +3,6 @@ package com.unad.diplomado.petsworld.ui.fragmentos;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,7 +20,6 @@ import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.domain.Sitio;
 import com.unad.diplomado.petsworld.io.VolleySingleton;
 import com.unad.diplomado.petsworld.tools.Constantes;
-import com.unad.diplomado.petsworld.ui.actividades.SitiosActivity;
 import com.unad.diplomado.petsworld.ui.adapter.SitioAdapter;
 
 import org.json.JSONArray;
@@ -34,12 +32,12 @@ import java.util.Arrays;
  * Created by UserSistemas on 28/10/2016.
  */
 
-public class SitiosFrament extends Fragment {
+public class SitiosFragment extends Fragment {
 
     /*
     Etiqueta de depuracion
      */
-    private static final String TAG = SitiosActivity.class.getSimpleName();
+    private static final String TAG = SitiosFragment.class.getName();
 
     /*
     Adaptador del recycler view
@@ -59,7 +57,7 @@ public class SitiosFrament extends Fragment {
 
     private Gson gson = new Gson();
 
-    public SitiosFrament() {
+    public SitiosFragment() {
     }
 
     @Override
@@ -77,25 +75,6 @@ public class SitiosFrament extends Fragment {
 
         // Cargar datos en el adaptador
         cargarAdaptador();
-
-        /*
-        // Obtener instancia del FAB
-
-        fab = (com.melnykov.fab.FloatingActionButton) v.findViewById(R.id.fab);
-        */
-        /*
-        // Asignar escucha al FAB
-        fab.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        // Iniciar actividad de inserción
-                        getActivity().startActivityForResult(
-                                new Intent(getActivity(), InsertActivity.class), 3);
-                    }
-                }
-        );
-        */
 
         return v;
     }
