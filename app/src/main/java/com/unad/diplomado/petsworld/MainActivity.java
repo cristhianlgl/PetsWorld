@@ -8,8 +8,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -20,6 +20,7 @@ import com.unad.diplomado.petsworld.ui.fragmentos.SitiosFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +67,9 @@ public class MainActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
-            return true;
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_frame, new ConfiguracionFragment())
+                    .commit();
         }
 
         return super.onOptionsItemSelected(item);
@@ -109,9 +112,8 @@ public class MainActivity extends AppCompatActivity
                 fragment = new SitiosFragment();
                 break;
             case R.id.nav_configuracion:
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_frame, new ConfiguracionFragment())
-                        .commit();
+                fragment = new ConfiguracionFragment();
+                break;
             case R.id.nav_acercade:
                 fragment = new AcercadeFragment();
                 break;
@@ -126,5 +128,12 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+    }
+
+    public void switchContent(int id, Fragment fragment) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft.replace(id, fragment, fragment.toString());
+        ft.addToBackStack(null);
+        ft.commit();
     }
 }

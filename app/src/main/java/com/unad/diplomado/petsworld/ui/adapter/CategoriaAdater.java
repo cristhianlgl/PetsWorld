@@ -1,5 +1,9 @@
 package com.unad.diplomado.petsworld.ui.adapter;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,14 +14,20 @@ import android.widget.TextView;
 
 import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.domain.Categoria;
+import com.unad.diplomado.petsworld.tools.Constantes;
+import com.unad.diplomado.petsworld.ui.fragmentos.SitiosFragment;
 
 import java.util.List;
 
 /**
  * Created by cristhian on 22/10/2016.
  */
-public class CategoriaAdater extends RecyclerView.Adapter<CategoriaAdater.CategroriaViewHolder>{
-    private List<Categoria> categorias;
+public class CategoriaAdater extends RecyclerView.Adapter<CategoriaAdater.CategroriaViewHolder> {
+    private List<Categoria> mCategorias;
+    private Fragment mFragment;
+    private Bundle mBundle;
+    public Context mContext;
+
 
     public static class CategroriaViewHolder extends RecyclerView.ViewHolder {
         public ImageView imagen;
@@ -32,13 +42,14 @@ public class CategoriaAdater extends RecyclerView.Adapter<CategoriaAdater.Categr
         }
     }
 
-    public CategoriaAdater(List<Categoria> categorias) {this.categorias = categorias; }
+    public CategoriaAdater(List<Categoria> categorias) {this.mCategorias = categorias; }
 
     @Override
-    public  int getItemCount(){ return categorias.size(); }
+    public  int getItemCount(){ return mCategorias.size(); }
 
     @Override
     public  CategroriaViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
+        mContext = viewGroup.getContext();
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_categoria, viewGroup, false);
         return new CategroriaViewHolder(v);
@@ -46,9 +57,31 @@ public class CategoriaAdater extends RecyclerView.Adapter<CategoriaAdater.Categr
 
     @Override
     public  void onBindViewHolder (CategroriaViewHolder viewHolder, int i){
-        viewHolder.imagen.setImageResource(categorias.get(i).getImagen());
-        viewHolder.nombre.setText(categorias.get(i).getNombre());
-        viewHolder.linearLayout.setBackgroundResource(categorias.get(i).getColor());
+        final Categoria item = mCategorias.get(i);
+        viewHolder.imagen.setImageResource(item.getImagen());
+        viewHolder.nombre.setText(item.getNombre());
+        viewHolder.linearLayout.setBackgroundResource(item.getColor());
+        viewHolder.linearLayout.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view) {
+                fragmentJump(item);
+            }
+        });
+    }
+
+    private void fragmentJump(Categoria mItemSelected) {
+        mFragment = new SitiosFragment();
+        mBundle = new Bundle();
+        mBundle.putString(Constantes.EXTRA_ID_CATEGORIA, mItemSelected.getIdCategoria());
+        mFragment.setArguments(mBundle);
+        if (mContext == null)
+            return;
+        if (mContext instanceof MainActivity) {
+            MainActivity mainActivity = (MainActivity) mContext;
+            Fragment frag = fragment;
+            mainActivity.switchContent(id, frag);
+        }
+
 
     }
 

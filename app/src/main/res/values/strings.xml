@@ -6,7 +6,7 @@
 
     <string name="action_settings">Configuracion</string>
 
-    <string name="ciudad_preferences">Ciudad</string>
+    <string name="ciudad_preferences">Obtener Informacion Ciudades</string>
     <string name="armenia_preferences">Armenia</string>
     <string name="cartago_preferences">Cartago</string>
     <string name="pereira_preferences">Pereira</string>

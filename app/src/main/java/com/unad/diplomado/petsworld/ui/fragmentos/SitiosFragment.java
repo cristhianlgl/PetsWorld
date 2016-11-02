@@ -75,8 +75,6 @@ public class SitiosFragment extends Fragment {
 
         // Cargar datos en el adaptador
 
-
-
         cargarAdaptador();
 
         return v;
@@ -107,6 +105,10 @@ public class SitiosFragment extends Fragment {
                                     @Override
                                     public void onErrorResponse(VolleyError error) {
                                         Log.d(TAG, "Error Volley: " + error.toString());
+                                        Toast.makeText(
+                                                getActivity(),
+                                                "Error de Conexion",
+                                                Toast.LENGTH_LONG).show();
                                     }
                                 }
 

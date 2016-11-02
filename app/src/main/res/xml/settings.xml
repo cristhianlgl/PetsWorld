@@ -1,46 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
-    <PreferenceCategory
+<android.support.v7.preference.PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <android.support.v7.preference.PreferenceCategory
         android:key="ciudad_pref"
         android:title="@string/ciudad_preferences">
 
-        <CheckBoxPreference
+        <android.support.v7.preference.SwitchPreferenceCompat
             android:key="armenia_pref"
             android:title="@string/armenia_preferences"
             android:defaultValue="true"/>
 
-        <CheckBoxPreference
+        <android.support.v7.preference.SwitchPreferenceCompat
             android:key="cartago_pref"
             android:title="@string/cartago_preferences"
             android:defaultValue="true"/>
 
-        <CheckBoxPreference
+        <android.support.v7.preference.SwitchPreferenceCompat
             android:key="manizales_pref"
             android:title="@string/manizales_preferences"
             android:defaultValue="true"/>
 
-        <CheckBoxPreference
+        <android.support.v7.preference.SwitchPreferenceCompat
             android:key="pereira_pref"
             android:title="@string/pereira_preferences"
             android:defaultValue="true"/>
 
-    </PreferenceCategory>
+    </android.support.v7.preference.PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="22">
-
-        <CheckBoxPreference
-            android:key="parent_checkbox_preference"
-            android:title="titulo 1"
-            android:summary="tilo tres" />
-
-        <!-- The visual style of a child is defined by this styled theme attribute. -->
-        <CheckBoxPreference
-            android:key="child_checkbox_preference"
-            android:dependency="parent_checkbox_preference"
-            android:layout="?android:attr/preferenceLayoutChild"
-            android:title="sdjskdjskjd"
-            android:summary="ueiuieuruei" />
-
-    </PreferenceCategory>
-</PreferenceScreen>
+</android.support.v7.preference.PreferenceScreen>
