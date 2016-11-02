@@ -6,6 +6,13 @@
 
     <string name="action_settings">Configuracion</string>
 
+    <string name="ciudad_preferences">Ciudad</string>
+    <string name="armenia_preferences">Armenia</string>
+    <string name="cartago_preferences">Cartago</string>
+    <string name="pereira_preferences">Pereira</string>
+    <string name="manizales_preferences">Manizales</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>

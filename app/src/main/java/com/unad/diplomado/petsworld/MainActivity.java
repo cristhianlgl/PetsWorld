@@ -8,12 +8,14 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.preference.PreferenceFragmentCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
 import com.unad.diplomado.petsworld.ui.fragmentos.AcercadeFragment;
 import com.unad.diplomado.petsworld.ui.fragmentos.CategoriasFragment;
+import com.unad.diplomado.petsworld.ui.fragmentos.ConfiguracionFragment;
 import com.unad.diplomado.petsworld.ui.fragmentos.SitiosFragment;
 
 public class MainActivity extends AppCompatActivity
@@ -107,8 +109,9 @@ public class MainActivity extends AppCompatActivity
                 fragment = new SitiosFragment();
                 break;
             case R.id.nav_configuracion:
-                fragment = new AcercadeFragment();
-                break;
+                getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content_frame, new ConfiguracionFragment())
+                        .commit();
             case R.id.nav_acercade:
                 fragment = new AcercadeFragment();
                 break;
