@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.unad.diplomado.petsworld.MainActivity;
 import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.domain.Categoria;
 import com.unad.diplomado.petsworld.tools.Constantes;
@@ -78,8 +79,8 @@ public class CategoriaAdater extends RecyclerView.Adapter<CategoriaAdater.Categr
             return;
         if (mContext instanceof MainActivity) {
             MainActivity mainActivity = (MainActivity) mContext;
-            Fragment frag = fragment;
-            mainActivity.switchContent(id, frag);
+            Fragment frag = mFragment;
+            //mainActivity.switchContent(id, frag);
         }
 
 
