@@ -6,13 +6,20 @@
 
     <string name="action_settings">Configuracion</string>
 
+
+    <!-- Titulos Ciudades -->
     <string name="ciudad_preferences">Obtener Informacion Ciudades</string>
     <string name="armenia_preferences">Armenia</string>
     <string name="cartago_preferences">Cartago</string>
     <string name="pereira_preferences">Pereira</string>
     <string name="manizales_preferences">Manizales</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Titulos de categorias -->
+    <string name="parques_cat">Parques</string>
+    <string name="comidas_cat">Comidas</string>
+    <string name="veterinarias_cat">Veterinarias</string>
+    <string name="tiendas_cat">Tiendas Pets</string>
+    <string name="servicios_cat">Servicios</string>
 
 </resources>

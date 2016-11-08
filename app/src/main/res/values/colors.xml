@@ -9,7 +9,7 @@
     <color name="colorTextColorPrimary">#ffffff</color>
     <color name="colorDivider">#BDBDBD</color>
 
-    //color botones categoria
+    <!-- color botones categoria -->
     <color name='colorNaranja'>#FFC107</color>
     <color name='colorNaranjaDark'>#FFA000</color>
     <color name='colorAzul'>#00BCD4</color>

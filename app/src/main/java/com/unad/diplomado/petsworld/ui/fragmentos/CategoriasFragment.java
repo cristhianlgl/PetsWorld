@@ -55,11 +55,12 @@ public class CategoriasFragment extends Fragment {
     private List<Categoria> datosSetup() {
         // inicializa las categorias
         List<Categoria> categorias = new ArrayList<>();
-        categorias.add(new Categoria("1", R.drawable.parques, "Parques", R.drawable.button_naranja));
-        categorias.add(new Categoria("2", R.drawable.comidas, "Comida", R.drawable.button_azul));
-        categorias.add(new Categoria("3", R.drawable.veterinarias, "Veterinarias", R.drawable.buttton_violeta));
-        categorias.add(new Categoria("4", R.drawable.tiendas, "Tiendas Pets", R.drawable.button_verde));
-        categorias.add(new Categoria("5", R.drawable.servicios, "Servicios", R.drawable.button_rojo));
+
+        categorias.add(new Categoria("1", R.drawable.parques, getString(R.string.parques_cat), R.drawable.button_naranja));
+        categorias.add(new Categoria("2", R.drawable.comidas, getString(R.string.comidas_cat), R.drawable.button_azul));
+        categorias.add(new Categoria("3", R.drawable.veterinarias, getString(R.string.veterinarias_cat), R.drawable.buttton_violeta));
+        categorias.add(new Categoria("4", R.drawable.tiendas, getString(R.string.tiendas_cat), R.drawable.button_verde));
+        categorias.add(new Categoria("5", R.drawable.servicios, getString(R.string.servicios_cat), R.drawable.button_rojo));
         return categorias;
     }
 }

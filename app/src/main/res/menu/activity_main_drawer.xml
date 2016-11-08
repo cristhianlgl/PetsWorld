@@ -10,23 +10,23 @@
                 <item
                     android:id="@+id/nav_parques"
                     android:icon="@drawable/ic_parques"
-                    android:title="Parques" />
+                    android:title="@string/parques_cat" />
                 <item
                     android:id="@+id/nav_comidas"
                     android:icon="@drawable/ic_comidas"
-                    android:title="Comidas" />
+                    android:title="@string/comidas_cat" />
                 <item
                     android:id="@+id/nav_veterinarias"
                     android:icon="@drawable/ic_veterinarias"
-                    android:title="Veterinarias" />
+                    android:title="@string/veterinarias_cat" />
                 <item
                     android:id="@+id/nav_tiendas"
                     android:icon="@drawable/ic_tiendas"
-                    android:title="Tiendas Pets" />
+                    android:title="@string/tiendas_cat" />
                 <item
                     android:id="@+id/nav_servicios"
                     android:icon="@drawable/ic_servicios"
-                    android:title="Servicios" />
+                    android:title="@string/servicios_cat" />
             </group>
         </menu>
     </item>

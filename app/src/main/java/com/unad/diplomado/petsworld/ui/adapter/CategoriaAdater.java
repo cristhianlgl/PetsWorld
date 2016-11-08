@@ -3,7 +3,6 @@ package com.unad.diplomado.petsworld.ui.adapter;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -79,11 +78,10 @@ public class CategoriaAdater extends RecyclerView.Adapter<CategoriaAdater.Categr
             return;
         if (mContext instanceof MainActivity) {
             MainActivity mainActivity = (MainActivity) mContext;
-            Fragment frag = mFragment;
-            //mainActivity.switchContent(id, frag);
+            mainActivity.setTitle(mItemSelected.getNombre());
+            mainActivity.cambiarItemMenuSelecionado(mItemSelected.getIdCategoria());
+            mainActivity.mostrarFragment(mFragment);
         }
-
-
     }
 
 

@@ -2,6 +2,7 @@ package com.unad.diplomado.petsworld.ui.fragmentos;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -78,6 +79,13 @@ public class SitiosFragment extends Fragment {
         cargarAdaptador();
 
         return v;
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        //you can set the title for your toolbar here for different fragments different titles
+       // getActivity().setTitle("Categoria");
     }
 
     /**

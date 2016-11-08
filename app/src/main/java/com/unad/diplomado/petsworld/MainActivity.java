@@ -21,7 +21,7 @@ import com.unad.diplomado.petsworld.ui.fragmentos.SitiosFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-
+    NavigationView mNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,8 +35,8 @@ public class MainActivity extends AppCompatActivity
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
+        mNavigationView = (NavigationView) findViewById(R.id.nav_view);
+        mNavigationView.setNavigationItemSelectedListener(this);
 
         displaySelectedScreen(R.id.nav_home);
     }
@@ -90,6 +90,7 @@ public class MainActivity extends AppCompatActivity
 
         //creating fragment object
         Fragment fragment = null;
+        String title = null;
 
         //initializing the fragment object which is selected
         switch (itemId) {
@@ -98,18 +99,23 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_parques:
                 fragment = new SitiosFragment();
+                title = getString(R.string.parques_cat);
                 break;
             case R.id.nav_comidas:
                 fragment = new SitiosFragment();
+                title = getString(R.string.comidas_cat);
                 break;
             case R.id.nav_veterinarias:
                 fragment = new SitiosFragment();
+                title = getString(R.string.veterinarias_cat);
                 break;
             case R.id.nav_tiendas:
                 fragment = new SitiosFragment();
+                title = getString(R.string.tiendas_cat);
                 break;
             case R.id.nav_servicios:
                 fragment = new SitiosFragment();
+                title = getString(R.string.servicios_cat);
                 break;
             case R.id.nav_configuracion:
                 fragment = new ConfiguracionFragment();
@@ -121,19 +127,28 @@ public class MainActivity extends AppCompatActivity
 
         //replacing the fragment
         if (fragment != null) {
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
-            ft.commit();
+            mostrarFragment(fragment);
+            if(title != null)
+            {
+                setTitle(title);
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
     }
 
-    public void switchContent(int id, Fragment fragment) {
+    public void mostrarFragment(Fragment fragment) {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(id, fragment, fragment.toString());
+        ft.replace(R.id.content_frame, fragment, fragment.toString());
         ft.addToBackStack(null);
         ft.commit();
+    }
+
+    public void cambiarItemMenuSelecionado(String idCategoria){
+        int id = Integer.parseInt(idCategoria);
+        Log.i("Errror",idCategoria);
+        mNavigationView.setCheckedItem(id);
+
     }
 }
