@@ -35,28 +35,12 @@ import java.util.Arrays;
 
 public class SitiosFragment extends Fragment {
 
-    /*
-    Etiqueta de depuracion
-     */
     private static final String TAG = SitiosFragment.class.getName();
-
-    /*
-    Adaptador del recycler view
-     */
     private SitioAdapter adapter;
-
-    /*
-    Instancia global del recycler view
-     */
     private RecyclerView lista;
-
-    /*
-    instancia global del administrador
-     */
     private RecyclerView.LayoutManager lManager;
-
-
     private Gson gson = new Gson();
+    private String idCategoriaExtra;
 
     public SitiosFragment() {
     }
@@ -74,6 +58,9 @@ public class SitiosFragment extends Fragment {
         lManager = new LinearLayoutManager(getActivity());
         lista.setLayoutManager(lManager);
 
+        idCategoriaExtra = getArguments().getString(Constantes.EXTRA_ID_CATEGORIA);
+
+        Log.i(TAG,idCategoriaExtra);
         // Cargar datos en el adaptador
 
         cargarAdaptador();

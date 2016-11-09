@@ -22,9 +22,6 @@ import com.unad.diplomado.petsworld.tools.Constantes;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-/**
- * Created by Fizz on 30/10/2016.
- */
 
 public class DetalleSitioFragment extends Fragment {
     /*

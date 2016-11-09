@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.unad.diplomado.petsworld.tools.Constantes;
 import com.unad.diplomado.petsworld.ui.fragmentos.AcercadeFragment;
 import com.unad.diplomado.petsworld.ui.fragmentos.CategoriasFragment;
 import com.unad.diplomado.petsworld.ui.fragmentos.ConfiguracionFragment;
@@ -98,23 +99,23 @@ public class MainActivity extends AppCompatActivity
                 fragment = new CategoriasFragment();
                 break;
             case R.id.nav_parques:
-                fragment = new SitiosFragment();
+                fragment = crearFragmentoSitios("1");
                 title = getString(R.string.parques_cat);
                 break;
             case R.id.nav_comidas:
-                fragment = new SitiosFragment();
+                fragment = crearFragmentoSitios("2");
                 title = getString(R.string.comidas_cat);
                 break;
             case R.id.nav_veterinarias:
-                fragment = new SitiosFragment();
+                fragment = crearFragmentoSitios("3");
                 title = getString(R.string.veterinarias_cat);
                 break;
             case R.id.nav_tiendas:
-                fragment = new SitiosFragment();
+                fragment = crearFragmentoSitios("4");
                 title = getString(R.string.tiendas_cat);
                 break;
             case R.id.nav_servicios:
-                fragment = new SitiosFragment();
+                fragment = crearFragmentoSitios("5");
                 title = getString(R.string.servicios_cat);
                 break;
             case R.id.nav_configuracion:
@@ -136,6 +137,14 @@ public class MainActivity extends AppCompatActivity
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+    }
+
+    private Fragment crearFragmentoSitios(String idCategoria){
+        Fragment sitiosFragment = new SitiosFragment();
+        Bundle argumentos = new Bundle();
+        argumentos.putString(Constantes.EXTRA_ID_CATEGORIA, idCategoria);
+        sitiosFragment.setArguments(argumentos);
+        return sitiosFragment;
     }
 
     public void mostrarFragment(Fragment fragment) {
