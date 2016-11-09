@@ -32,7 +32,7 @@ public class DetailSitioActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_sitios_detalle);
 
         if (getSupportActionBar() != null) {
             // Dehabilitar titulo de la actividad
@@ -48,7 +48,7 @@ public class DetailSitioActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.content_frame, DetalleSitioFragment.createInstance(idSitio), "DetailFragment")
+                    .add(R.id.layout_sitios_detalle, DetalleSitioFragment.createInstance(idSitio), "DetailFragment")
                     .commit();
         }
     }
