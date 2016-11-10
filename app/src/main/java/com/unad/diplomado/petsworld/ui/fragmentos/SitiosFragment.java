@@ -1,9 +1,11 @@
 package com.unad.diplomado.petsworld.ui.fragmentos;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -60,9 +62,7 @@ public class SitiosFragment extends Fragment {
 
         idCategoriaExtra = getArguments().getString(Constantes.EXTRA_ID_CATEGORIA);
 
-        Log.i(TAG,idCategoriaExtra);
         // Cargar datos en el adaptador
-
         cargarAdaptador();
 
         return v;
@@ -80,13 +80,16 @@ public class SitiosFragment extends Fragment {
      * en la respuesta
      */
     public void cargarAdaptador() {
+        //crea la url
+        String newURL = generarURL();
+        Log.i(TAG,newURL);
         // Petición GET
         VolleySingleton.
                 getInstance(getActivity()).
                 addToRequestQueue(
                         new JsonObjectRequest(
                                 Request.Method.GET,
-                                Constantes.GET_SITIOS,
+                                newURL,
                                 null,
                                 new Response.Listener<JSONObject>() {
 
@@ -148,5 +151,41 @@ public class SitiosFragment extends Fragment {
 
     }
 
+    private String generarURL() {
+        String filtroCiudades = "";
+        int countCiudades = 0;
+        //agrega la primara parte de la url
+        String newURL = Constantes.GET_SITIO_BY_CATEGORIA;
+        //agrega el primer parametro
+        newURL += "?idCategoria=" + idCategoriaExtra;
+        //trae las configuracion de las ciudades, para saber si desaea traer datos de cada una de elllas
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getContext());
+        if (sharedPref.getBoolean("armenia_pref",true)== true){
+            filtroCiudades += "armenia,";
+            countCiudades++;
+        }
+        if (sharedPref.getBoolean("cartago_pref",true)== true){
+            filtroCiudades += "cartago,";
+            countCiudades++;
+        }
+        if (sharedPref.getBoolean("manizales_pref",true)== true){
+            filtroCiudades += "manizales,";
+            countCiudades++;
+        }
+        if (sharedPref.getBoolean("pereira_pref",true)== true){
+            filtroCiudades += "pereira,";
+            countCiudades++;
+        }
 
+        //si la variable countCiudades esta en cero o en cuatro se pasa el parametro del null
+        //para que traiga la informacion de todas las ciudades
+        if(countCiudades == 0 || countCiudades == 4){
+            filtroCiudades ="null";
+        }else{
+            //elimina la ultimo caracter del la cadena
+            filtroCiudades =  filtroCiudades.substring(0, filtroCiudades.length()-1);
+        }
+        newURL += "&ciudades=" + filtroCiudades;
+        return  newURL;
+    }
 }
