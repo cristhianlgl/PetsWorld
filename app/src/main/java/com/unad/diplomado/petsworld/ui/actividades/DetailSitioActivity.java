@@ -34,12 +34,12 @@ public class DetailSitioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sitios_detalle);
 
+        /*
         if (getSupportActionBar() != null) {
-            // Dehabilitar titulo de la actividad
-            getSupportActionBar().setDisplayShowTitleEnabled(false);
             // Setear ícono "X" como Up button
             getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher);
         }
+        */
 
         // Retener instancia
         if (getIntent().getStringExtra(Constantes.EXTRA_ID_SITIO) != null)

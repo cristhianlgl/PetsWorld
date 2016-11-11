@@ -39,7 +39,9 @@ public class MainActivity extends AppCompatActivity
         mNavigationView = (NavigationView) findViewById(R.id.nav_view);
         mNavigationView.setNavigationItemSelectedListener(this);
 
-        displaySelectedScreen(R.id.nav_home);
+        if (savedInstanceState == null) {
+            displaySelectedScreen(R.id.nav_home);
+        }
     }
 
     @Override
@@ -49,6 +51,7 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
+
         }
     }
 

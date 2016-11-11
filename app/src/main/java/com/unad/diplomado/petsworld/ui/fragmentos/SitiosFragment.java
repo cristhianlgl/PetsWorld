@@ -82,7 +82,6 @@ public class SitiosFragment extends Fragment {
     public void cargarAdaptador() {
         //crea la url
         String newURL = generarURL();
-        Log.i(TAG,newURL);
         // Petición GET
         VolleySingleton.
                 getInstance(getActivity()).
