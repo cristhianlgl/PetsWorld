@@ -1,9 +1,14 @@
 package com.unad.diplomado.petsworld.domain;
 
+import java.io.Serializable;
+
 /**
  * Created by cristhian on 25/10/2016.
  */
-public class Sitio {
+
+@SuppressWarnings("serial")
+
+public class Sitio implements Serializable {
     private String idSitio;
     private String nombre;
     private String descripcion;
@@ -57,6 +62,10 @@ public class Sitio {
     public String getLongitud() {
         return longitud;
     }
+
+    public Double getLatitudDouble(){ return Double.parseDouble(latitud);}
+
+    public Double getLongitudDouble(){ return Double.parseDouble(longitud);}
 
     public String getIdCategoria() {
         return idCategoria;

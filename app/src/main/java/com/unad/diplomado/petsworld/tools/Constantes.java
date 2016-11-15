@@ -29,5 +29,6 @@ public class Constantes {
 
     public static final String EXTRA_ID_SITIO = "IDSITIO";
     public static final String EXTRA_ID_CATEGORIA = "IDCATEGORIA";
+    public static final String EXTRA_SITIO_MAPS = "SITIOMAP";
 
 }

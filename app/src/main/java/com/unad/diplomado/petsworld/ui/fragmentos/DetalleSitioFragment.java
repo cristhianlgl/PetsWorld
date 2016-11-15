@@ -1,11 +1,13 @@
 package com.unad.diplomado.petsworld.ui.fragmentos;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +20,7 @@ import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.domain.Sitio;
 import com.unad.diplomado.petsworld.io.VolleySingleton;
 import com.unad.diplomado.petsworld.tools.Constantes;
+import com.unad.diplomado.petsworld.ui.actividades.MapsActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -42,6 +45,8 @@ public class DetalleSitioFragment extends Fragment {
     private TextView ubicacion;
     private TextView telefono;
     private TextView ciudad;
+    private Button button;
+    private Sitio sitio;
     private String extra;
     private Gson gson = new Gson();
 
@@ -66,12 +71,22 @@ public class DetalleSitioFragment extends Fragment {
         telefono = (TextView) v.findViewById(R.id.detalle_sitio_telefono);
         ubicacion = (TextView) v.findViewById(R.id.detalle_sitio_ubicacion);
         ciudad = (TextView) v.findViewById(R.id.detalle_sitio_ciudad);
+        button = (Button) v.findViewById(R.id.ver_mapa);
 
         // Obtener extra del intent de envío
         extra = getArguments().getString(EXTRA_ID);
 
         // Cargar datos desde el web service
         cargarDatos();
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), MapsActivity.class);
+                intent.putExtra(Constantes.EXTRA_SITIO_MAPS,sitio);
+                startActivity(intent);
+            }
+        });
 
         return v;
     }
@@ -83,7 +98,7 @@ public class DetalleSitioFragment extends Fragment {
 
         // Añadir parámetro a la URL del web service
         String newURL = Constantes.GET_SITIO_BY_ID + "?idSitio=" + extra;
-
+        Log.i(TAG,newURL);
         // Realizar petición GET_BY_ID
         VolleySingleton.getInstance(getActivity()).addToRequestQueue(
                 new JsonObjectRequest(
@@ -126,7 +141,8 @@ public class DetalleSitioFragment extends Fragment {
                     JSONObject object = response.getJSONObject("Sitio");
 
                     //Parsear objeto
-                    Sitio sitio = gson.fromJson(object.toString(), Sitio.class);
+                    sitio = null;
+                    sitio = gson.fromJson(object.toString(), Sitio.class);
 
                     /*
                     // Asignar color del fondo
@@ -155,7 +171,6 @@ public class DetalleSitioFragment extends Fragment {
                     ciudad.setText(sitio.getCiudad());
                     telefono.setText(sitio.getTelefono());
                     ubicacion.setText(sitio.getUbicacion());
-
                     break;
 
                 case "2":
