@@ -43,7 +43,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         LatLng miPuntoSitio = new LatLng( sitio.getLatitudDouble(), sitio.getLongitudDouble());
         mMap.addMarker(new MarkerOptions().position(miPuntoSitio).title(sitio.getNombre()).snippet(sitio.getDescripcion()));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(miPuntoSitio));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(miPuntoSitio,18));
 
         int permissionCheck = ContextCompat.checkSelfPermission(MapsActivity.this,
                 Manifest.permission.ACCESS_FINE_LOCATION);
