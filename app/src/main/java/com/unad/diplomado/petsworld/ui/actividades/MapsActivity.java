@@ -5,6 +5,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,7 +28,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         setContentView(R.layout.activity_maps);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         sitio = (Sitio)getIntent().getExtras().getSerializable(Constantes.EXTRA_SITIO_MAPS);
-        Log.i("prueba maps",sitio.getLatitud());
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
@@ -37,19 +37,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
+        if (sitio.getLatitud() != null && sitio.getLongitud() != null) {
 
-        LatLng miPuntoSitio = new LatLng( sitio.getLatitudDouble(), sitio.getLongitudDouble());
-        mMap.addMarker(new MarkerOptions().position(miPuntoSitio).title(sitio.getNombre()).snippet(sitio.getDescripcion()));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(miPuntoSitio,18));
+            mMap = googleMap;
 
-        int permissionCheck = ContextCompat.checkSelfPermission(MapsActivity.this,
-                Manifest.permission.ACCESS_FINE_LOCATION);
+            // Add a marker in Sydney and move the camera
 
-        if(permissionCheck == 0){
-            mMap.setMyLocationEnabled(true);
+            LatLng miPuntoSitio = new LatLng(sitio.getLatitudDouble(), sitio.getLongitudDouble());
+            mMap.addMarker(new MarkerOptions().position(miPuntoSitio).title(sitio.getNombre()).snippet(sitio.getDescripcion()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(miPuntoSitio, 18));
+            mMap.getUiSettings().setZoomControlsEnabled(true);
+
+            int permissionCheck = ContextCompat.checkSelfPermission(MapsActivity.this,
+                    Manifest.permission.ACCESS_FINE_LOCATION);
+
+            if (permissionCheck == 0) {
+                mMap.setMyLocationEnabled(true);
+            }
+        } else{
+            Toast.makeText(this, "El sitio no tiene definida una ubicacion", Toast.LENGTH_SHORT).show();
         }
+
     }
 }

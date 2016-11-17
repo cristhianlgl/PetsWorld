@@ -31,4 +31,5 @@ dependencies {
     compile 'com.android.support:support-v4:24.2.1'
     compile 'com.android.support:preference-v14:24.0.0'
     compile 'com.google.android.gms:play-services-maps:9.2.0'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
 }

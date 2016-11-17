@@ -3,14 +3,8 @@ package com.unad.diplomado.petsworld.ui.actividades;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.provider.SyncStateContract;
-import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.tools.Constantes;
@@ -35,13 +29,6 @@ public class DetailSitioActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sitios_detalle);
-
-        /*
-        if (getSupportActionBar() != null) {
-            // Setear ícono "X" como Up button
-            getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher);
-        }
-        */
 
         // Retener instancia
         if (getIntent().getStringExtra(Constantes.EXTRA_ID_SITIO) != null)

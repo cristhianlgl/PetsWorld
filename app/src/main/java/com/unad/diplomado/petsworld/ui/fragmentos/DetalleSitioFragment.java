@@ -83,7 +83,7 @@ public class DetalleSitioFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), MapsActivity.class);
-                intent.putExtra(Constantes.EXTRA_SITIO_MAPS,sitio);
+                intent.putExtra(Constantes.EXTRA_SITIO_MAPS, sitio);
                 startActivity(intent);
             }
         });

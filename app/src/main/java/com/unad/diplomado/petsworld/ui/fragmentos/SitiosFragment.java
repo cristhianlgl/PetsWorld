@@ -2,6 +2,7 @@ package com.unad.diplomado.petsworld.ui.fragmentos;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -39,6 +41,7 @@ public class SitiosFragment extends Fragment {
 
     private static final String TAG = SitiosFragment.class.getName();
     private SitioAdapter adapter;
+    private ImageView imageView;
     private RecyclerView lista;
     private RecyclerView.LayoutManager lManager;
     private Gson gson = new Gson();
@@ -61,6 +64,9 @@ public class SitiosFragment extends Fragment {
         lista.setLayoutManager(lManager);
 
         idCategoriaExtra = getArguments().getString(Constantes.EXTRA_ID_CATEGORIA);
+        imageView = (ImageView) v.findViewById(R.id.item_sitio_imagen);
+
+
 
         // Cargar datos en el adaptador
         cargarAdaptador();

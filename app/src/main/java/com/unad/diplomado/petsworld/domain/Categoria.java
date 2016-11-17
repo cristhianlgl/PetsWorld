@@ -2,10 +2,14 @@ package com.unad.diplomado.petsworld.domain;
 
 import android.graphics.Color;
 
+import java.io.Serializable;
+
 /**
  * Created by cristhian on 22/10/2016.
  */
-public class Categoria {
+@SuppressWarnings("serial")
+
+public class Categoria implements Serializable {
     private  String idCategoria;
     private String nombre;
     private int imagen;

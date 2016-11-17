@@ -44,7 +44,22 @@ public class SitioAdapter extends RecyclerView.Adapter<SitioAdapter.SitioViewHol
         viewHolder.nombre.setText(items.get(i).getNombre());
         viewHolder.descripcion.setText(items.get(i).getDescripcion());
         viewHolder.ciudad.setText(items.get(i).getCiudad());
-        //cambio de imagen segun la categoria
+        //mostrar imagen segun la categoria
+        int imagen= R.drawable.parques;
+        int fondo = R.drawable.button_circle_naranja;
+        switch (items.get(i).getIdCategoria()) {
+            case "2": fondo = R.drawable.button_circle_azul; imagen = R.drawable.comidas;
+                break;
+            case "3": fondo = R.drawable.button_circle_violeta; imagen = R.drawable.veterinarias;
+                break;
+            case "4": fondo = R.drawable.button_circle_verde; imagen = R.drawable.tiendas;
+                break;
+            case "5": fondo = R.drawable.button_circle_rojo; imagen = R.drawable.servicios;
+                break;
+        }
+
+        viewHolder.imagen.setBackgroundResource(fondo);
+        viewHolder.imagen.setImageResource(imagen);
     }
 
     @Override
