@@ -46,7 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             LatLng miPuntoSitio = new LatLng(sitio.getLatitudDouble(), sitio.getLongitudDouble());
             mMap.addMarker(new MarkerOptions().position(miPuntoSitio).title(sitio.getNombre()).snippet(sitio.getDescripcion()));
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(miPuntoSitio, 18));
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(miPuntoSitio, 15));
             mMap.getUiSettings().setZoomControlsEnabled(true);
 
             int permissionCheck = ContextCompat.checkSelfPermission(MapsActivity.this,

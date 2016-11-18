@@ -2,6 +2,7 @@ package com.unad.diplomado.petsworld.ui.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.domain.Sitio;
+import com.unad.diplomado.petsworld.tools.Constantes;
 import com.unad.diplomado.petsworld.ui.actividades.DetailSitioActivity;
 
 import java.util.List;
@@ -64,8 +66,12 @@ public class SitioAdapter extends RecyclerView.Adapter<SitioAdapter.SitioViewHol
 
     @Override
     public void onItemClick(View view, int i) {
-        DetailSitioActivity.launch(
-                (Activity) context, items.get(i).getId());
+        Intent intent = new Intent(view.getContext(), DetailSitioActivity.class);
+        intent.putExtra(Constantes.EXTRA_SITIO, items.get(i));
+        view.getContext().startActivity(intent);
+
+       // DetailSitioActivity.launch(
+        //        (Activity) context, items.get(i).getId());
     }
 
     public static class SitioViewHolder extends RecyclerView.ViewHolder

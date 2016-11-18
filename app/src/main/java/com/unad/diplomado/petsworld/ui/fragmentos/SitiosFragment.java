@@ -41,7 +41,6 @@ public class SitiosFragment extends Fragment {
 
     private static final String TAG = SitiosFragment.class.getName();
     private SitioAdapter adapter;
-    private ImageView imageView;
     private RecyclerView lista;
     private RecyclerView.LayoutManager lManager;
     private Gson gson = new Gson();
@@ -64,12 +63,12 @@ public class SitiosFragment extends Fragment {
         lista.setLayoutManager(lManager);
 
         idCategoriaExtra = getArguments().getString(Constantes.EXTRA_ID_CATEGORIA);
-        imageView = (ImageView) v.findViewById(R.id.item_sitio_imagen);
-
-
 
         // Cargar datos en el adaptador
         cargarAdaptador();
+
+        //if(!res)
+          //   v = inflater.inflate(R.layout.fragment_error_conexion, container, false);
 
         return v;
     }
@@ -112,6 +111,7 @@ public class SitiosFragment extends Fragment {
                                                 getActivity(),
                                                 "Error de Conexion",
                                                 Toast.LENGTH_LONG).show();
+
                                     }
                                 }
 
