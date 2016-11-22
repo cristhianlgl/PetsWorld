@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.domain.Sitio;
 import com.unad.diplomado.petsworld.io.VolleySingleton;
 import com.unad.diplomado.petsworld.tools.Constantes;
+import com.unad.diplomado.petsworld.ui.actividades.NuevoSitioActivity;
 import com.unad.diplomado.petsworld.ui.adapter.SitioAdapter;
 
 import org.json.JSONArray;
@@ -42,6 +45,7 @@ public class SitiosFragment extends Fragment {
     private static final String TAG = SitiosFragment.class.getName();
     private SitioAdapter adapter;
     private RecyclerView lista;
+    private FloatingActionButton agregarSitio;
     private RecyclerView.LayoutManager lManager;
     private Gson gson = new Gson();
     private String idCategoriaExtra;
@@ -61,6 +65,18 @@ public class SitiosFragment extends Fragment {
         // Usar un administrador para LinearLayout
         lManager = new LinearLayoutManager(getActivity());
         lista.setLayoutManager(lManager);
+
+        agregarSitio = (FloatingActionButton) v.findViewById(R.id.fab_agregar_sitio);
+
+        agregarSitio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+               // Intent intent = new Intent(getActivity(), NuevoSitioActivity.class);
+                //startActivity(intent);
+                getActivity().startActivityForResult(
+                        new Intent(getActivity(), NuevoSitioActivity.class), 3);
+            }
+        });
 
         idCategoriaExtra = getArguments().getString(Constantes.EXTRA_ID_CATEGORIA);
 

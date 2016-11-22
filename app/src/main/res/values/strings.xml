@@ -1,12 +1,15 @@
 <resources>
     <string name="app_name">Pets World</string>
+
+    <!-- Titulo Activity -->
     <string name="activity_detalle_sitios">Detalle del Sitio</string>
 
     <string name="navigation_drawer_open">Abrir panel de navegación</string>
     <string name="navigation_drawer_close">Cerrar panel de navegación</string>
 
+    <!-- Menu Action -->
     <string name="action_settings">Configuracion</string>
-
+    <string name="action_discard">Descartar</string>
 
     <!-- Titulos Ciudades -->
     <string name="ciudad_preferences">Obtener Informacion Ciudades</string>
@@ -15,7 +18,6 @@
     <string name="pereira_preferences">Pereira</string>
     <string name="manizales_preferences">Manizales</string>
 
-
     <!-- Titulos de categorias -->
     <string name="parques_cat">Parques</string>
     <string name="comidas_cat">Comidas</string>
@@ -23,5 +25,19 @@
     <string name="tiendas_cat">Tiendas Pets</string>
     <string name="servicios_cat">Servicios</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_nuevor_sitio">Nuevo Sitio</string>
+
+    <!-- Ciudades array -->
+    <string-array name="entradas_ciudades">
+        <item>Armenia</item>
+        <item>Cartago</item>
+        <item>Manizales</item>
+        <item>Pereira</item>
+    </string-array>
+
+    <!-- Diálogos -->
+    <string name="dialog_ok">OK</string>
+    <string name="dialog_discard_msg">¿Descartar Cambios?</string>
+    <string name="dialog_cancel">Cancelar</string>
 
 </resources>
