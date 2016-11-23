@@ -11,6 +11,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -36,6 +37,7 @@ import java.util.Map;
 public class NuevoSitioFragment extends Fragment {
 
     private static final String TAG = NuevoSitioFragment.class.getSimpleName();
+    private static final String EXTRA_ID = "IDCATEGORIA";
 
     EditText nombre_input;
     EditText descripcion_input;
@@ -44,9 +46,18 @@ public class NuevoSitioFragment extends Fragment {
     EditText longitud_input;
     EditText latitud_input;
     Spinner ciudad_spinner;
+    Button button_save;
     String idCategoria;
 
     public NuevoSitioFragment() {
+    }
+
+    public static NuevoSitioFragment createInstance(String idCategoria) {
+        NuevoSitioFragment nuevoSitioFragment = new NuevoSitioFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString(EXTRA_ID, idCategoria);
+        nuevoSitioFragment.setArguments(bundle);
+        return nuevoSitioFragment;
     }
 
     @Override
@@ -60,18 +71,25 @@ public class NuevoSitioFragment extends Fragment {
         longitud_input = (EditText) v.findViewById(R.id.longitud_input);
         latitud_input = (EditText) v.findViewById(R.id.latitud_input);
         ciudad_spinner = (Spinner) v.findViewById(R.id.ciudad_spinner);
+        button_save = (Button) v.findViewById(R.id.save_input);
+        idCategoria = getArguments().getString(EXTRA_ID);
+
+        button_save.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (!camposVacios())
+                    guardarSitio();
+                else
+                    Toast.makeText( getActivity(), "Completa los campos", Toast.LENGTH_LONG).show();
+            }
+        });
+
         return  v;
     }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
+/*
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-
         switch (id) {
             case android.R.id.home:// CONFIRMAR
                 if (!camposVacios())
@@ -90,7 +108,7 @@ public class NuevoSitioFragment extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
-
+*/
 
     public void guardarSitio() {
 
@@ -109,7 +127,7 @@ public class NuevoSitioFragment extends Fragment {
         map.put("descripcion", descripcion);
         map.put("ubicacion", ubicacion);
         map.put("telefono", telefono);
-        map.put("idCategoria", descripcion);
+        map.put("idCategoria", idCategoria);
         map.put("idCiudad", idCiudad);
         map.put("latitud", latitud);
         map.put("longitud", longitud);

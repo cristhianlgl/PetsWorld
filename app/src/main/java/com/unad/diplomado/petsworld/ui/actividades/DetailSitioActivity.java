@@ -14,7 +14,6 @@ import com.unad.diplomado.petsworld.ui.fragmentos.DetalleSitioFragment;
 
 public class DetailSitioActivity extends AppCompatActivity {
 
-    private String idSitio;
     private Sitio sitio;
 
     @Override
@@ -25,7 +24,6 @@ public class DetailSitioActivity extends AppCompatActivity {
         // Retener instancia
         if(getIntent().getExtras().getSerializable(Constantes.EXTRA_SITIO) != null) {
             sitio = (Sitio) getIntent().getExtras().getSerializable(Constantes.EXTRA_SITIO);
-            idSitio = sitio.getId();
         }
 
         if (savedInstanceState == null) {

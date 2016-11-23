@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.unad.diplomado.petsworld.domain.Categoria;
 import com.unad.diplomado.petsworld.tools.Constantes;
 import com.unad.diplomado.petsworld.ui.fragmentos.AcercadeFragment;
 import com.unad.diplomado.petsworld.ui.fragmentos.CategoriasFragment;
@@ -21,6 +22,8 @@ import com.unad.diplomado.petsworld.ui.fragmentos.SitiosFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public Categoria categoria;
 
     NavigationView mNavigationView;
     @Override

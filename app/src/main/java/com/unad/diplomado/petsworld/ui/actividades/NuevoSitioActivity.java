@@ -6,27 +6,32 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
 import android.view.View;
 
 import com.unad.diplomado.petsworld.R;
+import com.unad.diplomado.petsworld.tools.Constantes;
 import com.unad.diplomado.petsworld.ui.fragmentos.ConfirmDialogFragment;
 import com.unad.diplomado.petsworld.ui.fragmentos.NuevoSitioFragment;
 
 public class NuevoSitioActivity extends AppCompatActivity implements ConfirmDialogFragment.ConfirmDialogListener{
+
+    private String idCategoria;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nuevo_sitio);
 
-        if (getSupportActionBar() != null)
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_check);
+        // Retener instancia
+        if(getIntent().getExtras().getSerializable(Constantes.EXTRA_ID_CATEGORIA) != null) {
+            idCategoria =  getIntent().getExtras().getString(Constantes.EXTRA_ID_CATEGORIA);
+        }
 
-
-        // Creación del fragmento de inserción
+          // Creación del fragmento de inserción
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container_nuevo_sitio, new NuevoSitioFragment(), "NuevoSitioFragment")
+                    .add(R.id.container_nuevo_sitio, NuevoSitioFragment.createInstance(idCategoria), "NuevoSitioFragment")
                     .commit();
         }
     }

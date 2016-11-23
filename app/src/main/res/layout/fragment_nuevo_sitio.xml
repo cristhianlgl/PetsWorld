@@ -135,4 +135,14 @@
         android:entries="@array/entradas_ciudades"
         android:layout_below="@+id/categoria_texto" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/save_input"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_primary"
+        android:text="Guardar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"  />
+
 </RelativeLayout>

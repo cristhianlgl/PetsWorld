@@ -47,8 +47,6 @@ public class DetalleSitioFragment extends Fragment {
     private TextView ciudad;
     private Button button;
     private Sitio sitio;
-    private String extra;
-    private Gson gson = new Gson();
 
 
     public static DetalleSitioFragment createInstance(Sitio sitio_param) {
@@ -74,7 +72,6 @@ public class DetalleSitioFragment extends Fragment {
         button = (Button) v.findViewById(R.id.ver_mapa);
 
         // Obtener extra del intent de envío
-        extra = getArguments().getString(EXTRA_ID);
         sitio = (Sitio)getArguments().getSerializable(EXTRA_ID);
 
         if (sitio != null) {

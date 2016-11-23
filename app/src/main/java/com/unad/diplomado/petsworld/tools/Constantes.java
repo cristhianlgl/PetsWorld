@@ -23,7 +23,7 @@ public class Constantes {
     public static final String GET_SITIOS = "http://petsworld.netau.net/obtener_sitios.php";
     public static final String GET_SITIO_BY_ID = URL_BASE + "/obtener_sitio_por_id.php";
     public static final String GET_SITIO_BY_CATEGORIA = URL_BASE + "/obtener_sitio_por_categoria.php";
-    public static final String INSERT = URL_BASE  + "/insertar_meta.php";
+    public static final String INSERT = URL_BASE  + "/insertar_sitio.php";
 
     public static final String EXTRA_SITIO = "IDSITIO";
     public static final String EXTRA_ID_CATEGORIA = "IDCATEGORIA";

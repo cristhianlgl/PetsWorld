@@ -65,20 +65,20 @@ public class SitiosFragment extends Fragment {
         // Usar un administrador para LinearLayout
         lManager = new LinearLayoutManager(getActivity());
         lista.setLayoutManager(lManager);
+        idCategoriaExtra = getArguments().getString(Constantes.EXTRA_ID_CATEGORIA);
 
         agregarSitio = (FloatingActionButton) v.findViewById(R.id.fab_agregar_sitio);
 
         agregarSitio.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // Intent intent = new Intent(getActivity(), NuevoSitioActivity.class);
-                //startActivity(intent);
-                getActivity().startActivityForResult(
-                        new Intent(getActivity(), NuevoSitioActivity.class), 3);
+                Intent intent = new Intent(getActivity(), NuevoSitioActivity.class);
+                intent.putExtra(Constantes.EXTRA_ID_CATEGORIA, idCategoriaExtra);
+                getActivity().startActivityForResult(intent, 3);
             }
         });
 
-        idCategoriaExtra = getArguments().getString(Constantes.EXTRA_ID_CATEGORIA);
+
 
         // Cargar datos en el adaptador
         cargarAdaptador();
