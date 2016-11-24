@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.preference.AndroidResources;
 
 import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.domain.Categoria;
@@ -21,6 +22,9 @@ public class DetailSitioActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sitios_detalle);
 
+        if (getSupportActionBar() != null)
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_close);
+
         // Retener instancia
         if(getIntent().getExtras().getSerializable(Constantes.EXTRA_SITIO) != null) {
             sitio = (Sitio) getIntent().getExtras().getSerializable(Constantes.EXTRA_SITIO);
@@ -32,6 +36,8 @@ public class DetailSitioActivity extends AppCompatActivity {
                     .commit();
         }
     }
+
+
 
 }
 

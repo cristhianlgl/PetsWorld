@@ -78,6 +78,7 @@ public class NuevoSitioFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (!camposVacios())
+
                     guardarSitio();
                 else
                     Toast.makeText( getActivity(), "Completa los campos", Toast.LENGTH_LONG).show();

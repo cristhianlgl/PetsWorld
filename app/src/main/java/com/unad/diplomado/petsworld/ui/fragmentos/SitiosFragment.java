@@ -74,7 +74,7 @@ public class SitiosFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), NuevoSitioActivity.class);
                 intent.putExtra(Constantes.EXTRA_ID_CATEGORIA, idCategoriaExtra);
-                getActivity().startActivityForResult(intent, 3);
+                getActivity().startActivityForResult(intent, 2);
             }
         });
 
