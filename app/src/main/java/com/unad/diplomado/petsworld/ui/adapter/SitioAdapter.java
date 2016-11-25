@@ -2,6 +2,7 @@ package com.unad.diplomado.petsworld.ui.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.domain.Sitio;
+import com.unad.diplomado.petsworld.tools.Constantes;
 import com.unad.diplomado.petsworld.ui.actividades.DetailSitioActivity;
 
 import java.util.List;
@@ -42,15 +44,34 @@ public class SitioAdapter extends RecyclerView.Adapter<SitioAdapter.SitioViewHol
     @Override
     public void onBindViewHolder(SitioAdapter.SitioViewHolder viewHolder, int i) {
         viewHolder.nombre.setText(items.get(i).getNombre());
-        viewHolder.descripcion.setText(items.get(i).getDescripcion());
+//        viewHolder.descripcion.setText(items.get(i).getDescripcion());
         viewHolder.ciudad.setText(items.get(i).getCiudad());
-        //cambio de imagen segun la categoria
+        //mostrar imagen segun la categoria
+        int imagen= R.drawable.parques;
+        int fondo = R.drawable.button_circle_naranja;
+        switch (items.get(i).getIdCategoria()) {
+            case "2": fondo = R.drawable.button_circle_azul; imagen = R.drawable.comidas;
+                break;
+            case "3": fondo = R.drawable.button_circle_violeta; imagen = R.drawable.veterinarias;
+                break;
+            case "4": fondo = R.drawable.button_circle_verde; imagen = R.drawable.tiendas;
+                break;
+            case "5": fondo = R.drawable.button_circle_rojo; imagen = R.drawable.servicios;
+                break;
+        }
+
+        viewHolder.imagen.setBackgroundResource(fondo);
+        viewHolder.imagen.setImageResource(imagen);
     }
 
     @Override
     public void onItemClick(View view, int i) {
-        DetailSitioActivity.launch(
-                (Activity) context, items.get(i).getId());
+        Intent intent = new Intent(view.getContext(), DetailSitioActivity.class);
+        intent.putExtra(Constantes.EXTRA_SITIO, items.get(i));
+        view.getContext().startActivity(intent);
+
+       // DetailSitioActivity.launch(
+        //        (Activity) context, items.get(i).getId());
     }
 
     public static class SitioViewHolder extends RecyclerView.ViewHolder
@@ -64,7 +85,7 @@ public class SitioAdapter extends RecyclerView.Adapter<SitioAdapter.SitioViewHol
         public SitioViewHolder (View v, ItemClickListener listener){
             super(v);
             nombre = (TextView) v.findViewById(R.id.item_sitio_nombre);
-            descripcion = (TextView) v.findViewById(R.id.item_sitio_descripcion);
+           // descripcion = (TextView) v.findViewById(R.id.item_sitio_descripcion);
             ciudad = (TextView) v.findViewById(R.id.item_sitio_ciudad);
             imagen = (ImageView) v.findViewById(R.id.item_sitio_imagen);
             this.listener = listener;

@@ -1,5 +1,6 @@
 package com.unad.diplomado.petsworld;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.unad.diplomado.petsworld.domain.Categoria;
 import com.unad.diplomado.petsworld.tools.Constantes;
 import com.unad.diplomado.petsworld.ui.fragmentos.AcercadeFragment;
 import com.unad.diplomado.petsworld.ui.fragmentos.CategoriasFragment;
@@ -21,6 +23,8 @@ import com.unad.diplomado.petsworld.ui.fragmentos.SitiosFragment;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public Categoria categoria;
 
     NavigationView mNavigationView;
     @Override
@@ -52,6 +56,18 @@ public class MainActivity extends AppCompatActivity
         } else {
             super.onBackPressed();
 
+        }
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        Log.i("AAA", String.valueOf(requestCode) + " y " + String.valueOf(resultCode));
+        if(requestCode==2)
+        {
+            getSupportFragmentManager().findFragmentByTag("sitiosFragment");
         }
     }
 
@@ -159,8 +175,6 @@ public class MainActivity extends AppCompatActivity
 
     public void cambiarItemMenuSelecionado(String idCategoria){
         int id = Integer.parseInt(idCategoria);
-        Log.i("Errror",idCategoria);
         mNavigationView.setCheckedItem(id);
-
     }
 }

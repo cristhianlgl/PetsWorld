@@ -47,14 +47,12 @@ public class DetalleSitioFragment extends Fragment {
     private TextView ciudad;
     private Button button;
     private Sitio sitio;
-    private String extra;
-    private Gson gson = new Gson();
 
 
-    public static DetalleSitioFragment createInstance(String idSitio) {
+    public static DetalleSitioFragment createInstance(Sitio sitio_param) {
         DetalleSitioFragment detailFragment = new DetalleSitioFragment();
         Bundle bundle = new Bundle();
-        bundle.putString(EXTRA_ID, idSitio);
+        bundle.putSerializable(EXTRA_ID, sitio_param);
         detailFragment.setArguments(bundle);
         return detailFragment;
     }
@@ -74,126 +72,28 @@ public class DetalleSitioFragment extends Fragment {
         button = (Button) v.findViewById(R.id.ver_mapa);
 
         // Obtener extra del intent de envío
-        extra = getArguments().getString(EXTRA_ID);
+        sitio = (Sitio)getArguments().getSerializable(EXTRA_ID);
 
-        // Cargar datos desde el web service
-        cargarDatos();
+        if (sitio != null) {
+            nombre.setText(sitio.getNombre());
+            descripcion.setText(sitio.getDescripcion());
+            ciudad.setText(sitio.getCiudad());
+            telefono.setText(sitio.getTelefono());
+            ubicacion.setText(sitio.getUbicacion());
+        }else{
+            Toast.makeText( getActivity(), "No se ha podido obtener los datos del sitio",
+                    Toast.LENGTH_LONG).show();
+        }
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(getContext(), MapsActivity.class);
-                intent.putExtra(Constantes.EXTRA_SITIO_MAPS,sitio);
+                intent.putExtra(Constantes.EXTRA_SITIO_MAPS, sitio);
                 startActivity(intent);
             }
         });
 
         return v;
-    }
-
-    /**
-     * Obtiene los datos desde el servidor
-     */
-    public void cargarDatos() {
-
-        // Añadir parámetro a la URL del web service
-        String newURL = Constantes.GET_SITIO_BY_ID + "?idSitio=" + extra;
-        Log.i(TAG,newURL);
-        // Realizar petición GET_BY_ID
-        VolleySingleton.getInstance(getActivity()).addToRequestQueue(
-                new JsonObjectRequest(
-                        Request.Method.GET,
-                        newURL,
-                        null,
-                        new Response.Listener<JSONObject>() {
-
-                            @Override
-                            public void onResponse(JSONObject response) {
-                                // Procesar respuesta Json
-                                procesarRespuesta(response);
-                            }
-                        },
-                        new Response.ErrorListener() {
-                            @Override
-                            public void onErrorResponse(VolleyError error) {
-                                Log.d(TAG, "Error Volley: " + error.getMessage());
-                            }
-                        }
-                )
-        );
-    }
-
-    /**
-     * Procesa cada uno de los estados posibles de la
-     * respuesta enviada desde el servidor
-     *
-     * @param response Objeto Json
-     */
-    private void procesarRespuesta(JSONObject response) {
-
-        try {
-            // Obtener atributo "mensaje"
-            String mensaje = response.getString("estado");
-
-            switch (mensaje) {
-                case "1":
-                    // Obtener objeto "meta"
-                    JSONObject object = response.getJSONObject("Sitio");
-
-                    //Parsear objeto
-                    sitio = null;
-                    sitio = gson.fromJson(object.toString(), Sitio.class);
-
-                    /*
-                    // Asignar color del fondo
-                    switch (meta.getCategoria()) {
-                        case "Salud":
-                            cabecera.setBackgroundColor(getResources().getColor(R.color.saludColor));
-                            break;
-                        case "Finanzas":
-                            cabecera.setBackgroundColor(getResources().getColor(R.color.finanzasColor));
-                            break;
-                        case "Espiritual":
-                            cabecera.setBackgroundColor(getResources().getColor(R.color.espiritualColor));
-                            break;
-                        case "Profesional":
-                            cabecera.setBackgroundColor(getResources().getColor(R.color.profesionalColor));
-                            break;
-                        case "Material":
-                            cabecera.setBackgroundColor(getResources().getColor(R.color.materialColor));
-                            break;
-                    }
-                    */
-
-                    // Seteando valores en los views
-                    nombre.setText(sitio.getNombre());
-                    descripcion.setText(sitio.getDescripcion());
-                    ciudad.setText(sitio.getCiudad());
-                    telefono.setText(sitio.getTelefono());
-                    ubicacion.setText(sitio.getUbicacion());
-                    break;
-
-                case "2":
-                    String mensaje2 = response.getString("mensaje");
-                    Toast.makeText(
-                            getActivity(),
-                            mensaje2,
-                            Toast.LENGTH_LONG).show();
-                    break;
-
-                case "3":
-                    String mensaje3 = response.getString("mensaje");
-                    Toast.makeText(
-                            getActivity(),
-                            mensaje3,
-                            Toast.LENGTH_LONG).show();
-                    break;
-            }
-
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
     }
 }

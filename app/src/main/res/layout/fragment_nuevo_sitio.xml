@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/content_nuevor_sitio"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.unad.diplomado.petsworld.ui.fragmentos.NuevoSitioFragment">
+
+    <!-- Nombre-->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/nombre_input_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"  >
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/nombre_input"
+            android:hint="Nombre Sitio"
+            android:minLines="1"
+            android:maxLines="1"
+            android:maxLength="55" />
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- Descripcion-->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/descripcion_input_layout"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/nombre_input_layout"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/descripcion_input"
+            android:hint="Descripcion"
+            android:minLines="1"
+            android:maxLines="1"
+            android:maxLength="55"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- Descripcion-->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/ubicacion_input_layout"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/descripcion_input_layout"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/ubicacion_input"
+            android:hint="Ubicacion"
+            android:minLines="1"
+            android:maxLines="1"
+            android:maxLength="55"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- Descripcion-->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/telefono_input_layout"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/ubicacion_input_layout"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/telefono_input"
+            android:hint="Telefono"
+            android:minLines="1"
+            android:maxLines="1"
+            android:maxLength="55"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- Descripcion-->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/latitud_input_layout"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/telefono_input_layout"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/latitud_input"
+            android:hint="Latitud"
+            android:minLines="1"
+            android:maxLines="1"
+            android:maxLength="55"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <!-- Descripcion-->
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/longitud_input_layout"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/latitud_input_layout"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/longitud_input"
+            android:hint="Longitud"
+            android:minLines="1"
+            android:maxLines="1"
+            android:maxLength="55"/>
+    </android.support.design.widget.TextInputLayout>
+
+
+    <!-- Etiqueta Categoría -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Categoría"
+        android:id="@+id/categoria_texto"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/longitud_input_layout"
+        android:paddingTop="16dp"
+        android:textColor="@color/colorAccent" />
+
+    <!-- Categoría -->
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/ciudad_spinner"
+        android:entries="@array/entradas_ciudades"
+        android:layout_below="@+id/categoria_texto" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/save_input"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_primary"
+        android:text="Guardar"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"  />
+
+</RelativeLayout>
