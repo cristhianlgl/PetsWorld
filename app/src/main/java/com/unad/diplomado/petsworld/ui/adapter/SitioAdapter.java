@@ -3,7 +3,9 @@ package com.unad.diplomado.petsworld.ui.adapter;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,6 +64,13 @@ public class SitioAdapter extends RecyclerView.Adapter<SitioAdapter.SitioViewHol
 
         viewHolder.imagen.setBackgroundResource(fondo);
         viewHolder.imagen.setImageResource(imagen);
+
+        //cambia el color de la imagen de verificado para indicar si el sitio ya fue verificado o no
+        if(items.get(i).getVerificado().equals("1")){
+            viewHolder.imagenVerificado.setBackgroundResource(R.drawable.button_circle_primary);
+        } else {
+            viewHolder.imagenVerificado.setBackgroundResource(R.drawable.button_circle_gris);
+        }
     }
 
     @Override
@@ -77,9 +86,10 @@ public class SitioAdapter extends RecyclerView.Adapter<SitioAdapter.SitioViewHol
     public static class SitioViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
         public TextView nombre;
-        public TextView descripcion;
+        //public TextView descripcion;
         public TextView ciudad;
         public ImageView imagen;
+        public ImageView imagenVerificado;
         public ItemClickListener listener;
 
         public SitioViewHolder (View v, ItemClickListener listener){
@@ -88,6 +98,7 @@ public class SitioAdapter extends RecyclerView.Adapter<SitioAdapter.SitioViewHol
            // descripcion = (TextView) v.findViewById(R.id.item_sitio_descripcion);
             ciudad = (TextView) v.findViewById(R.id.item_sitio_ciudad);
             imagen = (ImageView) v.findViewById(R.id.item_sitio_imagen);
+            imagenVerificado = (ImageView) v.findViewById(R.id.imagen_verificado);
             this.listener = listener;
             v.setOnClickListener(this);
         }

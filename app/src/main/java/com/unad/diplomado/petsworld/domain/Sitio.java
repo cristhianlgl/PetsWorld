@@ -20,8 +20,9 @@ public class Sitio implements Serializable {
     private String Categoria;
     private String idCiudad;
     private String Ciudad;
+    private String verificado;
 
-     public Sitio(String idSitio, String nombre, String descripcion, String ubicacion, String telefono, String latitud, String longitud, String idCategoria, String Categoria, String idCiudad, String Ciudad) {
+     public Sitio(String idSitio, String nombre, String descripcion, String ubicacion, String telefono, String latitud, String longitud, String idCategoria, String Categoria, String idCiudad, String Ciudad, String verificado) {
         this.idSitio = idSitio;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -33,6 +34,7 @@ public class Sitio implements Serializable {
         this.Categoria = Categoria;
         this.idCiudad = idCiudad;
         this.Ciudad = Ciudad;
+        this.verificado = verificado;
     }
 
     public String getId() {
@@ -79,6 +81,8 @@ public class Sitio implements Serializable {
 
     public String getCiudad() { return Ciudad; }
 
+    public String getVerificado() {return  verificado; }
+
     public void setId(String idSitio) {
         this.idSitio = idSitio;
     }
@@ -118,4 +122,6 @@ public class Sitio implements Serializable {
     public void setCategoria(String categoria) { this.Categoria = categoria; }
 
     public void setCiudad(String ciudad) { this.Ciudad = ciudad; }
+
+    public void setVerificado(String verificado) { this.verificado = verificado; }
 }
