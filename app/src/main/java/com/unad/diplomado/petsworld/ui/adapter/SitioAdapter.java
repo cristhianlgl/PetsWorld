@@ -46,7 +46,6 @@ public class SitioAdapter extends RecyclerView.Adapter<SitioAdapter.SitioViewHol
     @Override
     public void onBindViewHolder(SitioAdapter.SitioViewHolder viewHolder, int i) {
         viewHolder.nombre.setText(items.get(i).getNombre());
-//        viewHolder.descripcion.setText(items.get(i).getDescripcion());
         viewHolder.ciudad.setText(items.get(i).getCiudad());
         //mostrar imagen segun la categoria
         int imagen= R.drawable.parques;
@@ -78,15 +77,11 @@ public class SitioAdapter extends RecyclerView.Adapter<SitioAdapter.SitioViewHol
         Intent intent = new Intent(view.getContext(), DetailSitioActivity.class);
         intent.putExtra(Constantes.EXTRA_SITIO, items.get(i));
         view.getContext().startActivity(intent);
-
-       // DetailSitioActivity.launch(
-        //        (Activity) context, items.get(i).getId());
     }
 
     public static class SitioViewHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
         public TextView nombre;
-        //public TextView descripcion;
         public TextView ciudad;
         public ImageView imagen;
         public ImageView imagenVerificado;
@@ -95,7 +90,6 @@ public class SitioAdapter extends RecyclerView.Adapter<SitioAdapter.SitioViewHol
         public SitioViewHolder (View v, ItemClickListener listener){
             super(v);
             nombre = (TextView) v.findViewById(R.id.item_sitio_nombre);
-           // descripcion = (TextView) v.findViewById(R.id.item_sitio_descripcion);
             ciudad = (TextView) v.findViewById(R.id.item_sitio_ciudad);
             imagen = (ImageView) v.findViewById(R.id.item_sitio_imagen);
             imagenVerificado = (ImageView) v.findViewById(R.id.imagen_verificado);

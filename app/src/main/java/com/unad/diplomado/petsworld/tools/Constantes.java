@@ -8,11 +8,11 @@ public class Constantes {
      * Transición Home -> Detalle
      */
     public static final int CODIGO_DETALLE = 100;
+    public static final int COIDGO_NUEVO_SITIO =101;
 
     /**
      * Transición Detalle -> Actualización
      */
-    public static final int CODIGO_ACTUALIZACION = 101;
 
     private static final String URL_BASE = "http://petsworld.netau.net";
 

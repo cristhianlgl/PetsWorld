@@ -1,6 +1,7 @@
 package com.unad.diplomado.petsworld.ui.fragmentos;
 
 import android.app.Activity;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -78,38 +79,21 @@ public class NuevoSitioFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 if (!camposVacios())
-
                     guardarSitio();
-                else
-                    Toast.makeText( getActivity(), "Completa los campos", Toast.LENGTH_LONG).show();
+                else {
+                    Toast.makeText(getActivity(), "Debe completar algunos campos", Toast.LENGTH_LONG).show();
+                }
             }
         });
 
-        return  v;
+        return v;
     }
-/*
+
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        switch (id) {
-            case android.R.id.home:// CONFIRMAR
-                if (!camposVacios())
-                    guardarSitio();
-                else
-                    Toast.makeText( getActivity(), "Completa los campos", Toast.LENGTH_LONG).show();
-                return true;
-
-            case R.id.action_discard:// DESCARTAR
-                if (!camposVacios())
-                    mostrarDialogo();
-                else
-                    getActivity().finish();
-                break;
-        }
-
-        return super.onOptionsItemSelected(item);
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
     }
-*/
+
 
     public void guardarSitio() {
 
@@ -120,7 +104,7 @@ public class NuevoSitioFragment extends Fragment {
         final String ubicacion = ubicacion_input.getText().toString();
         final String longitud = longitud_input.getText().toString();
         final String latitud = latitud_input.getText().toString();
-        final String idCiudad = getIdCiudad( ciudad_spinner.getSelectedItem().toString());
+        final String idCiudad = getIdCiudad(ciudad_spinner.getSelectedItem().toString());
 
         HashMap<String, String> map = new HashMap<>();// Mapeo previo
 
@@ -218,37 +202,28 @@ public class NuevoSitioFragment extends Fragment {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
     }
 
 
     public boolean camposVacios() {
-        String nombre = nombre_input.getText().toString();
-        String ubicacion = ubicacion_input.getText().toString();
-        String longitud = longitud_input.getText().toString();
-        String latitud = latitud_input.getText().toString();
-
-        return (nombre.isEmpty() || ubicacion.isEmpty() || longitud.isEmpty() || latitud.isEmpty());
+        return (validarEditText(nombre_input) || validarEditText(ubicacion_input) ||
+                validarEditText(longitud_input) || validarEditText(latitud_input));
     }
 
-
-    /**
-     * Muestra un diálogo de confirmación
-     */
-    public void mostrarDialogo() {
-        DialogFragment dialogo = ConfirmDialogFragment.
-                createInstance(
-                        getResources().
-                                getString(R.string.dialog_discard_msg));
-        dialogo.show(getFragmentManager(), "ConfirmDialog");
+    private Boolean validarEditText(EditText editText) {
+        if (editText.getText().toString().isEmpty()) {
+            editText.setError("Campo requerido");
+            return true;
+        }
+        return false;
     }
 
     private String getIdCiudad(String ciudad) {
         switch (ciudad) {
-            case "Armenia":  return  "1";
-            case "Cartago": return  "2";
-            case "Manizales": return  "3";
-            case "Pereira": return  "4";
+            case "Armenia":     return "1";
+            case "Cartago":     return "2";
+            case "Manizales":   return "3";
+            case "Pereira":     return "4";
         }
         return "1";
     }

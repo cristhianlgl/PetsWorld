@@ -9,7 +9,7 @@
 
     <!-- Menu Action -->
     <string name="action_settings">Configuracion</string>
-    <string name="action_discard">Descartar</string>
+    <string name="action_discard">Cerrar</string>
 
     <!-- Titulos Ciudades -->
     <string name="ciudad_preferences">Obtener Informacion Ciudades</string>

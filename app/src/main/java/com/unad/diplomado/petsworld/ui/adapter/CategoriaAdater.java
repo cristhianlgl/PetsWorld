@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.unad.diplomado.petsworld.MainActivity;
+import com.unad.diplomado.petsworld.ui.actividades.MainActivity;
 import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.domain.Categoria;
 import com.unad.diplomado.petsworld.tools.Constantes;

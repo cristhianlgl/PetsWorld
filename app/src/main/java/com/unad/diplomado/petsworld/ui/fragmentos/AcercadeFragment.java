@@ -9,7 +9,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.unad.diplomado.petsworld.MainActivity;
 import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.ui.actividades.MapsActivity;
 

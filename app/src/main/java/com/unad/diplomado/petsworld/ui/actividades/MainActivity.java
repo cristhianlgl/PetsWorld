@@ -1,5 +1,6 @@
-package com.unad.diplomado.petsworld;
+package com.unad.diplomado.petsworld.ui.actividades;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.domain.Categoria;
 import com.unad.diplomado.petsworld.tools.Constantes;
 import com.unad.diplomado.petsworld.ui.fragmentos.AcercadeFragment;
@@ -55,7 +57,6 @@ public class MainActivity extends AppCompatActivity
             drawer.closeDrawer(GravityCompat.START);
         } else {
             super.onBackPressed();
-
         }
     }
 
@@ -65,11 +66,14 @@ public class MainActivity extends AppCompatActivity
     {
         super.onActivityResult(requestCode, resultCode, data);
         Log.i("AAA", String.valueOf(requestCode) + " y " + String.valueOf(resultCode));
-        if(requestCode==2)
-        {
-            getSupportFragmentManager().findFragmentByTag("sitiosFragment");
+        if(requestCode == Constantes.COIDGO_NUEVO_SITIO ) {
+            if(resultCode == RESULT_OK) {
+                //getSupportFragmentManager().findFragmentByTag("sitiosFragment");
+                //realiza acciones para actualizar los datos del sitio
+            }
         }
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
