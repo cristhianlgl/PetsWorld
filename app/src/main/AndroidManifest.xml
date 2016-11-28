@@ -34,10 +34,8 @@
         <activity
             android:name=".ui.actividades.MapsActivity"
             android:label="@string/title_activity_maps">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.unad.diplomado.petsworld.ui.actividades.DetailSitioActivity" />
         </activity>
+
         <activity
             android:name=".ui.actividades.NuevoSitioActivity"
             android:label="@string/title_activity_nuevor_sitio"></activity>

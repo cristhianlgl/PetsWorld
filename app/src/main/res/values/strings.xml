@@ -24,7 +24,7 @@
     <string name="veterinarias_cat">Veterinarias</string>
     <string name="tiendas_cat">Tiendas Pets</string>
     <string name="servicios_cat">Servicios</string>
-    <string name="title_activity_maps">Map</string>
+    <string name="title_activity_maps">Ubicacion del Sitio</string>
     <string name="title_activity_nuevor_sitio">Nuevo Sitio</string>
 
     <!-- Ciudades array -->

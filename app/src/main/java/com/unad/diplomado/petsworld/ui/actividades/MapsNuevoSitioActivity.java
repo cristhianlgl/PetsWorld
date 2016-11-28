@@ -1,13 +1,10 @@
 package com.unad.diplomado.petsworld.ui.actividades;
 
 import android.content.Intent;
-import android.location.Location;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -18,9 +15,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.unad.diplomado.petsworld.R;
-import com.unad.diplomado.petsworld.domain.Sitio;
-import com.unad.diplomado.petsworld.io.GetAddressTask;
-import com.unad.diplomado.petsworld.tools.Constantes;
 
 public class MapsNuevoSitioActivity extends AppCompatActivity
         implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnMarkerDragListener, GoogleMap.OnMapClickListener {
