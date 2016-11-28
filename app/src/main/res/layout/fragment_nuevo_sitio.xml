@@ -149,6 +149,16 @@
                 android:layout_below="@+id/categoria_texto"
                 android:entries="@array/entradas_ciudades" />
 
+            <Button
+                android:id="@+id/map_input"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_primary"
+                android:text="Mapa"
+                android:textColor="@android:color/white"
+                android:layout_toRightOf="@+id/latitud_input_layout"
+                android:layout_toEndOf="@+id/latitud_input_layout" />
+
         </RelativeLayout>
 
     </ScrollView>

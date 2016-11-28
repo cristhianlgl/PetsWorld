@@ -1,21 +1,18 @@
 package com.unad.diplomado.petsworld.ui.fragmentos;
 
 import android.app.Activity;
-import android.support.design.widget.Snackbar;
-import android.support.v4.app.DialogFragment;
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -25,6 +22,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.unad.diplomado.petsworld.R;
 import com.unad.diplomado.petsworld.io.VolleySingleton;
 import com.unad.diplomado.petsworld.tools.Constantes;
+import com.unad.diplomado.petsworld.ui.actividades.MapsNuevoSitioActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -35,20 +33,21 @@ import java.util.Map;
 /**
  * A placeholder fragment containing a simple view.
  */
-public class NuevoSitioFragment extends Fragment {
+public class NuevoSitioFragment extends Fragment implements View.OnClickListener {
 
     private static final String TAG = NuevoSitioFragment.class.getSimpleName();
     private static final String EXTRA_ID = "IDCATEGORIA";
 
-    EditText nombre_input;
-    EditText descripcion_input;
-    EditText ubicacion_input;
-    EditText telefono_input;
-    EditText longitud_input;
-    EditText latitud_input;
-    Spinner ciudad_spinner;
-    Button button_save;
-    String idCategoria;
+    private EditText nombre_input;
+    private EditText descripcion_input;
+    private EditText ubicacion_input;
+    private EditText telefono_input;
+    private EditText longitud_input;
+    private EditText latitud_input;
+    private Spinner ciudad_spinner;
+    private Button button_save;
+    private Button button_mapa;
+    private String idCategoria;
 
     public NuevoSitioFragment() {
     }
@@ -73,20 +72,31 @@ public class NuevoSitioFragment extends Fragment {
         latitud_input = (EditText) v.findViewById(R.id.latitud_input);
         ciudad_spinner = (Spinner) v.findViewById(R.id.ciudad_spinner);
         button_save = (Button) v.findViewById(R.id.save_input);
+        button_mapa = (Button) v.findViewById(R.id.map_input);
         idCategoria = getArguments().getString(EXTRA_ID);
 
-        button_save.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        button_mapa.setOnClickListener(this);
+        button_save.setOnClickListener(this);
+
+        return v;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.save_input:
                 if (!camposVacios())
                     guardarSitio();
                 else {
                     Toast.makeText(getActivity(), "Debe completar algunos campos", Toast.LENGTH_LONG).show();
                 }
-            }
-        });
-
-        return v;
+                break;
+            case R.id.map_input:
+                Intent intent = new Intent (getActivity(), MapsNuevoSitioActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 
     @Override
@@ -227,4 +237,6 @@ public class NuevoSitioFragment extends Fragment {
         }
         return "1";
     }
+
+
 }

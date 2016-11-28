@@ -22,17 +22,6 @@ public class AcercadeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         //returning our layout file
         View v  = inflater.inflate(R.layout.fragment_acercade, container, false);
-        Button button = (Button) v.findViewById(R.id.button_mapa);
-
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), MapsActivity.class);
-                startActivity(intent);
-            }
-        });
-
-
         return v;
     }
 
