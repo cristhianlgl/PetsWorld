@@ -92,51 +92,14 @@
                     android:minLines="1" />
             </android.support.design.widget.TextInputLayout>
 
-            <!-- Descripcion-->
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/latitud_input_layout"
-                android:layout_width="150dp"
-                android:layout_height="wrap_content"
-                android:hint="Latitud"
-                android:layout_below="@+id/telefono_input_layout">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/latitud_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLength="55"
-                    android:maxLines="1"
-                    android:minLines="1" />
-            </android.support.design.widget.TextInputLayout>
-
-            <!-- Descripcion-->
-
-            <android.support.design.widget.TextInputLayout
-                android:id="@+id/longitud_input_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/latitud_input_layout"
-                android:hint="Longitud"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true">
-
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/longitud_input"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:maxLength="55"
-                    android:maxLines="1"
-                    android:minLines="1" />
-            </android.support.design.widget.TextInputLayout>
-
             <!-- Etiqueta ciudad -->
             <TextView
-                android:id="@+id/categoria_texto"
+                android:id="@+id/ciudad_texto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@+id/longitud_input_layout"
+                android:layout_below="@+id/telefono_input_layout"
                 android:paddingTop="16dp"
                 android:text="Categoría"
                 android:textColor="@color/colorAccent" />
@@ -146,18 +109,70 @@
                 android:id="@+id/ciudad_spinner"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/categoria_texto"
+                android:layout_below="@+id/ciudad_texto"
                 android:entries="@array/entradas_ciudades" />
 
-            <Button
-                android:id="@+id/map_input"
-                android:layout_width="wrap_content"
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:id="@+id/separador"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@color/colorDivider"
+                android:layout_below="@id/ciudad_spinner"/>
+
+
+
+                <ImageButton
+                    android:id="@+id/map_input"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/button_circle_gris"
+                    android:layout_below="@id/separador"
+                    android:src="@drawable/ic_maps"
+                    android:textColor="@android:color/white" />
+
+                <!-- Latitud-->
+            <TextView
+                android:id="@+id/latitud_input_layout"
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:background="@drawable/button_primary"
-                android:text="Mapa"
-                android:textColor="@android:color/white"
-                android:layout_toRightOf="@+id/latitud_input_layout"
-                android:layout_toEndOf="@+id/latitud_input_layout" />
+                android:textColor="@color/colorAccent"
+                android:text="Latitud"
+                android:layout_marginLeft="16dp"
+                android:layout_below="@+id/separador"
+                android:layout_toRightOf="@+id/map_input" />
+
+            <TextView
+                android:id="@+id/latitud_input"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_marginLeft="16dp"
+                android:layout_below="@+id/latitud_input_layout"
+                android:textSize="16dp"
+                android:layout_toRightOf="@+id/map_input" />
+
+            <!-- Longitud-->
+                <TextView
+                    android:id="@+id/longitud_input_layout"
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/colorAccent"
+                    android:text="Longitud"
+                    android:layout_marginLeft="16dp"
+                    android:layout_below="@+id/separador"
+                    android:layout_toRightOf="@+id/latitud_input" />
+
+            <TextView
+                android:id="@+id/longitud_input"
+                android:layout_width="130dp"
+                android:layout_height="wrap_content"
+                android:text="0"
+                android:layout_marginLeft="16dp"
+                android:layout_below="@+id/longitud_input_layout"
+                android:layout_toRightOf="@+id/latitud_input" />
+
 
         </RelativeLayout>
 

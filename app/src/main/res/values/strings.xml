@@ -40,8 +40,12 @@
     <string name="dialog_discard_msg">¿Descartar Cambios?</string>
     <string name="dialog_cancel">Cancelar</string>
 
-    <string name="acerca_de_descripcion">Esta aplicacion esta enfocada en </string>
-    <string name="acerca_de_agradeciemineto">hdh nsnh sndknasd nsndkasnd nnsdknasd nnsdkansd nsdnkands nnaksdnsa nknasndksand</string>
+    <string name="acerca_de_descripcion">Pets World es una aplicación que está enfocada en es dar a conocer a toda la comunidad del
+        eje cafetero, los diferentes lugares, sitios o establecimiento donde puedan llevar a sus mascotas desde un parque hasta
+        sitios más especializados como tiendas para mascotas, peluquerías, guarderías, veterinarias entre otros. </string>
+    <string name="acerca_de_titulo_creditos">Creditos</string>
+    <string name="acerca_de_creditos">Los iconos utilizados en esta aplicación fueron diseñados por www.freepik.com
+        desde www.flaticon.com con licencia Creative Commons BY 3.0</string>
 
 
 </resources>

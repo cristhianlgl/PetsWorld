@@ -36,6 +36,8 @@ import org.json.JSONObject;
 
 import java.util.Arrays;
 
+import static android.app.Activity.RESULT_OK;
+
 /**
  * Created by UserSistemas on 28/10/2016.
  */
@@ -74,26 +76,28 @@ public class SitiosFragment extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getActivity(), NuevoSitioActivity.class);
                 intent.putExtra(Constantes.EXTRA_ID_CATEGORIA, idCategoriaExtra);
-                getActivity().startActivityForResult(intent, 2);
+                startActivityForResult(intent, Constantes.CODIGO_NUEVO_SITIO);
             }
         });
-
-
-
         // Cargar datos en el adaptador
         cargarAdaptador();
-
-        //if(!res)
-          //   v = inflater.inflate(R.layout.fragment_error_conexion, container, false);
-
         return v;
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //you can set the title for your toolbar here for different fragments different titles
-       // getActivity().setTitle("Categoria");
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == Constantes.CODIGO_NUEVO_SITIO ) {
+            if(resultCode == RESULT_OK) {
+                cargarAdaptador();
+            }
+        }
     }
 
     /**

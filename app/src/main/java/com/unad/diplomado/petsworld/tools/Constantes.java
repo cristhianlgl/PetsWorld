@@ -8,8 +8,8 @@ public class Constantes {
      * Transición Home -> Detalle
      */
     public static final int CODIGO_DETALLE = 100;
-    public static final int COIDGO_NUEVO_SITIO =101;
-
+    public static final int CODIGO_NUEVO_SITIO =101;
+    public static final int CODIGO_MAPS =102;
     /**
      * Transición Detalle -> Actualización
      */

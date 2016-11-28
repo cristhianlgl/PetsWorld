@@ -10,9 +10,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -27,8 +30,11 @@ import com.unad.diplomado.petsworld.ui.actividades.MapsNuevoSitioActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.security.PublicKey;
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.app.Activity.RESULT_OK;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -42,11 +48,11 @@ public class NuevoSitioFragment extends Fragment implements View.OnClickListener
     private EditText descripcion_input;
     private EditText ubicacion_input;
     private EditText telefono_input;
-    private EditText longitud_input;
-    private EditText latitud_input;
+    private TextView longitud_input;
+    private TextView latitud_input;
     private Spinner ciudad_spinner;
     private Button button_save;
-    private Button button_mapa;
+    private ImageButton button_mapa;
     private String idCategoria;
 
     public NuevoSitioFragment() {
@@ -68,13 +74,25 @@ public class NuevoSitioFragment extends Fragment implements View.OnClickListener
         descripcion_input = (EditText) v.findViewById(R.id.descripcion_input);
         ubicacion_input = (EditText) v.findViewById(R.id.ubicacion_input);
         telefono_input = (EditText) v.findViewById(R.id.telefono_input);
-        longitud_input = (EditText) v.findViewById(R.id.longitud_input);
-        latitud_input = (EditText) v.findViewById(R.id.latitud_input);
+        longitud_input = (TextView) v.findViewById(R.id.longitud_input);
+        latitud_input = (TextView) v.findViewById(R.id.latitud_input);
         ciudad_spinner = (Spinner) v.findViewById(R.id.ciudad_spinner);
         button_save = (Button) v.findViewById(R.id.save_input);
-        button_mapa = (Button) v.findViewById(R.id.map_input);
+        button_mapa = (ImageButton) v.findViewById(R.id.map_input);
         idCategoria = getArguments().getString(EXTRA_ID);
 
+        ciudad_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                latitud_input.setText("0");
+                longitud_input.setText("0");
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         button_mapa.setOnClickListener(this);
         button_save.setOnClickListener(this);
 
@@ -86,15 +104,19 @@ public class NuevoSitioFragment extends Fragment implements View.OnClickListener
         switch (v.getId())
         {
             case R.id.save_input:
-                if (!camposVacios())
+                if (!camposVacios()) {
                     guardarSitio();
-                else {
-                    Toast.makeText(getActivity(), "Debe completar algunos campos", Toast.LENGTH_LONG).show();
                 }
                 break;
             case R.id.map_input:
                 Intent intent = new Intent (getActivity(), MapsNuevoSitioActivity.class);
-                startActivity(intent);
+                intent.putExtra("IdCiudad", ciudad_spinner.getSelectedItem().toString());
+                String logText = longitud_input.getText().toString();
+                if(!logText.isEmpty() || !logText.equals("0") ) {
+                    intent.putExtra("Longitud", longitud_input.getText().toString());
+                    intent.putExtra("Latitud", latitud_input.getText().toString());
+                }
+                startActivityForResult(intent,Constantes.CODIGO_MAPS);
                 break;
         }
     }
@@ -104,6 +126,17 @@ public class NuevoSitioFragment extends Fragment implements View.OnClickListener
         super.onCreateOptionsMenu(menu, inflater);
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == Constantes.CODIGO_MAPS ) {
+            if(resultCode == RESULT_OK) {
+                longitud_input.setText(String.valueOf(data.getExtras().getDouble("Longitud")));
+                latitud_input.setText(String.valueOf(data.getExtras().getDouble("Latitud")));
+            }
+        }
+    }
 
     public void guardarSitio() {
 
@@ -192,7 +225,7 @@ public class NuevoSitioFragment extends Fragment implements View.OnClickListener
                             mensaje,
                             Toast.LENGTH_LONG).show();
                     // Enviar código de éxito
-                    getActivity().setResult(Activity.RESULT_OK);
+                    getActivity().setResult(RESULT_OK);
                     // Terminar actividad
                     getActivity().finish();
                     break;
@@ -214,18 +247,25 @@ public class NuevoSitioFragment extends Fragment implements View.OnClickListener
         }
     }
 
-
     public boolean camposVacios() {
-        return (validarEditText(nombre_input) || validarEditText(ubicacion_input) ||
-                validarEditText(longitud_input) || validarEditText(latitud_input));
-    }
-
-    private Boolean validarEditText(EditText editText) {
-        if (editText.getText().toString().isEmpty()) {
-            editText.setError("Campo requerido");
-            return true;
+        Boolean flat = false;
+        if(nombre_input.getText().toString().isEmpty()) {
+            nombre_input.setError("Campo requerido");
+            flat =true;
         }
-        return false;
+        if(ubicacion_input.getText().toString().isEmpty()) {
+            ubicacion_input.setError("Campo requerido");
+            flat =true;
+        }
+        if(latitud_input.getText().toString().equals("0")) {
+            latitud_input.setError("Diferente de Cero");
+            flat =true;
+        }
+        if(longitud_input.getText().toString().equals("0")) {
+            longitud_input.setError("Diferente de Cero");
+            flat =true;
+        }
+        return flat;
     }
 
     private String getIdCiudad(String ciudad) {
@@ -237,6 +277,5 @@ public class NuevoSitioFragment extends Fragment implements View.OnClickListener
         }
         return "1";
     }
-
 
 }

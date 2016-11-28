@@ -1,5 +1,6 @@
 package com.unad.diplomado.petsworld.ui.actividades;
 
+import android.content.Intent;
 import android.location.Location;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
@@ -27,8 +28,9 @@ public class MapsNuevoSitioActivity extends AppCompatActivity
     private GoogleMap mMap;
     private Marker markerNuevoSitio;
     private TextView locationText;
-    private TextView addressText;
-    private Sitio sitio;
+    private String ciudad;
+    private double latitud;
+    private double longitud;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +42,11 @@ public class MapsNuevoSitioActivity extends AppCompatActivity
             getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_check);
         }
 
-//        sitio = (Sitio)getIntent().getExtras().getSerializable(Constantes.EXTRA_SITIO_MAPS);
+        Bundle extras = getIntent().getExtras();
+        ciudad = extras.getString("IdCiudad","1");
+        longitud = Double.parseDouble(extras.getString("Longitud","0"));
+        latitud = Double.parseDouble(extras.getString("Latitud","0"));
+
         locationText = (TextView) findViewById(R.id.location);
 
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
@@ -54,7 +60,10 @@ public class MapsNuevoSitioActivity extends AppCompatActivity
         int id = item.getItemId();
         switch (id) {
             case android.R.id.home:
-                this.setResult(1);
+                Intent data = new Intent();
+                data.putExtra("Latitud",latitud);
+                data.putExtra("Longitud",longitud);
+                this.setResult(RESULT_OK, data);
                 this.finish();
                 break;
         }
@@ -67,22 +76,25 @@ public class MapsNuevoSitioActivity extends AppCompatActivity
 
         mMap = googleMap;
 
-        LatLng position = locacionDefaultSitio(1);
+        LatLng position;
+        if(longitud == 0 && latitud == 0){
+            position = locacionDefaultSitio(ciudad);
+        } else {
+            position = new LatLng(latitud,longitud);
+        }
+        setUbicacionActual(position);
         markerNuevoSitio = mMap.addMarker(new MarkerOptions()
                 .position(position)
                 .title("Nuevo Sitio")
                 .draggable(true));
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(position));
-
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(position,15));
         mMap.getUiSettings().setZoomGesturesEnabled(true);
-
-        //set Map TYPE
+        mMap.getUiSettings().setZoomControlsEnabled(true);
         mMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
         int permissionCheck = ContextCompat.checkSelfPermission(MapsNuevoSitioActivity.this,
                 android.Manifest.permission.ACCESS_FINE_LOCATION);
-
         if (permissionCheck == 0) {
             mMap.setMyLocationEnabled(true);
         }
@@ -90,23 +102,14 @@ public class MapsNuevoSitioActivity extends AppCompatActivity
         mMap.setOnMarkerClickListener(this);
         mMap.setOnMarkerDragListener(this);
         mMap.setOnMapClickListener(this);
-        //set "listener" for changing my location
-        //mMap.setOnMyLocationChangeListener(myLocationChangeListener());
-
     }
-
 
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        double latitude =  marker.getPosition().latitude;
-        double longitude = marker.getPosition().longitude;
         if (marker.equals(markerNuevoSitio)){
-            locationText.setText("Latitud: " + latitude + "  y Longitud: " + longitude );
-        } else {
-            markerNuevoSitio.setPosition(marker.getPosition());
+            setUbicacionActual(marker.getPosition());
         }
-
         return false;
     }
 
@@ -114,40 +117,34 @@ public class MapsNuevoSitioActivity extends AppCompatActivity
     public void onMapClick(LatLng latLng) {
         if ( latLng != markerNuevoSitio.getPosition()){
             markerNuevoSitio.setPosition(latLng);
+            setUbicacionActual(latLng);
         }
     }
 
-    private GoogleMap.OnMyLocationChangeListener myLocationChangeListener() {
-        return new GoogleMap.OnMyLocationChangeListener() {
-            @Override
-            public void onMyLocationChange(Location location) {
-                LatLng loc = new LatLng(location.getLatitude(), location.getLongitude());
-                double longitude = location.getLongitude();
-                double latitude = location.getLatitude();
-
-                Marker marker;
-                marker = mMap.addMarker(new MarkerOptions().position(loc));
-                mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(loc, 16.0f));
-                locationText.setText("You are at [" + longitude + " ; " + latitude + " ]");
-
-                //get current address by invoke an AsyncTask object
-                //new GetAddressTask(MapsNuevoSitioActivity.this).execute(String.valueOf(latitude), String.valueOf(longitude));
-            }
-        };
+    @Override
+    public void onMarkerDragEnd(Marker marker) {
+        if (marker.equals(markerNuevoSitio)){
+            setUbicacionActual(marker.getPosition());
+        }
     }
 
-    private LatLng locacionDefaultSitio(int idCiudad){
+    private LatLng locacionDefaultSitio(String idCiudad){
         //por defecto la direccion de cartego
         LatLng posicion = new LatLng(4.749659, -75.913154);
         switch (idCiudad){
-            case 1:  posicion = new LatLng(4.538771, -75.672570); break; //aremenia
-            case 2:  posicion = new LatLng(4.749659, -75.913154); break; //cartago
-            case 3:  posicion = new LatLng(5.066744, -75.516603); break; //manizales
-            case 4:  posicion = new LatLng(4.813943, -75.693091); break; //pereira
+            case "Armenia":  posicion = new LatLng(4.538771, -75.672570); break;
+            case "Cartago":  posicion = new LatLng(4.749659, -75.913154); break;
+            case "Manizales":  posicion = new LatLng(5.066744, -75.516603); break;
+            case "Pereira":  posicion = new LatLng(4.813943, -75.693091); break;
         }
         return posicion;
     }
 
+    private void setUbicacionActual(LatLng latLng ){
+        latitud = latLng.latitude;
+        longitud = latLng.longitude;
+        locationText.setText("Latitud: " + latitud + "  y Longitud: " + longitud );
+    }
 
     @Override
     public void onMarkerDragStart(Marker marker) {
@@ -158,11 +155,5 @@ public class MapsNuevoSitioActivity extends AppCompatActivity
     public void onMarkerDrag(Marker marker) {
 
     }
-
-    @Override
-    public void onMarkerDragEnd(Marker marker) {
-
-    }
-
 
 }
