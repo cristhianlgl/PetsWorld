@@ -183,6 +183,8 @@ public class NuevoSitioFragment extends Fragment implements View.OnClickListener
                             @Override
                             public void onErrorResponse(VolleyError error) {
                                 Log.d(TAG, "Error Volley: " + error.getMessage());
+                                Toast.makeText(getActivity(),"Error de conexion, no se puedo guardar el registro",
+                                        Toast.LENGTH_LONG).show();
                             }
                         }
 
